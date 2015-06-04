@@ -1,0 +1,32 @@
+<div class="col-md-12" style="position:fixed; z-index: 1;">
+  <div class="col-md-12 page-id-header">
+     <h3>2015 PLAYOFFS PLAYER PROFILE</h3>
+  </div>
+  <div class="col-md-12 page-sub-nav"> 
+    <h4><%= @po_playerdata[0]["DISPLAY_FIRST_LAST"] %></h4>
+    </div>
+</div>
+
+<!-- Main Pane -->
+<div class="col-md-11 main">
+  <div class="row" style="margin: 20px 0px">
+    <!-- Player Info -->
+    <div class="col-md-3 player-page-profile">
+      <div style="width: 100%">
+      <img src="http://stats.nba.com/media/players/230x185/<%= @po_data[0]["PLAYER_ID"] %>.png" width="200px">
+      </div>
+      <div class="player-page-name">
+        <p><%= @po_playerdata[0]["DISPLAY_FIRST_LAST"] %></p>
+      </div>
+      <div class="player-page-info">
+      <h5><%= @po_playerdata[0]["TEAM_CITY"] %> <%= @po_playerdata[0]["TEAM_NAME"] %>
+      </h5>
+      <img src="http://stats.nba.com/media/img/teams/logos/<%= @po_playerdata[0]["TEAM_ABBREVIATION"] %>_logo.svg" width="50">
+      <h5>Pos: <%= @po_playerdata[0]["POSITION"] %> | Exp: <%= @po_playerdata[0]["SEASON_EXP"] %> yrs</h5>
+      <h5>Record: <%= @po_playerteamdata[0]["W"] %>W - <%= @po_playerteamdata[0]["L"] %>L</h5>
+      <h5>Games Played: <%= @po_PlayerTotalsdata[0]["GP"] %></h5>
+      <h4><%= (@po_PlayerTotalsdata[0]["PTS"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> PTS / <%= (@po_PlayerTotalsdata[0]["REB"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> REB / <%= (@po_PlayerTotalsdata[0]["AST"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> AST</h4>  
+      
+      </div>
+    </div>
+    <!-- End Player Info -->

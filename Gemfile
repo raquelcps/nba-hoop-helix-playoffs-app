@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+#Added by Author
+gem 'unirest'
+gem 'bootstrap-sass', '~>3.3.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
