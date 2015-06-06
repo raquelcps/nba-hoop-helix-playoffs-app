@@ -127,6 +127,13 @@
   text-align: right;
 }
 
+.stat-name-green a {
+  margin-top: 60px;
+  text-transform: uppercase;
+  color: #5CB85C;
+  text-align: right;
+}
+
 .stat-name-lt-blue {
   margin-top: 60px;
   text-transform: uppercase;
@@ -134,7 +141,21 @@
   text-align: right;
 }
 
-.stat-name-orange {
+.stat-name-lt-blue a {
+  margin-top: 60px;
+  text-transform: uppercase;
+  color: #5BC0DE;
+  text-align: right;
+}
+
+.stat-name-orange, {
+  margin-top: 60px;
+  text-transform: uppercase;
+  color: orange;
+  text-align: right;
+}
+
+.stat-name-orange a {
   margin-top: 60px;
   text-transform: uppercase;
   color: orange;
@@ -212,6 +233,21 @@
 	font-size: 14px;
 	line-height: 30px;
 	background-color: #E18B11;
+}
+
+.glyphicon-orange {
+	color: orange;
+	font-size: 20px;
+}
+
+.glyphicon-lt-blue {
+	color: #5BC0DE;
+	font-size: 20px;
+}
+
+.glyphicon-green {
+	color: #5CB85C;
+	font-size: 20px;
 }
 
 .footer {

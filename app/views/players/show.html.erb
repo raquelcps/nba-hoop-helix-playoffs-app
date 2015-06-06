@@ -60,7 +60,11 @@
 	  <!-- AST -->
 	  <div class="row">
     	<div class="col-md-5 stat-name-orange">
-	        <h3>AST</h3>
+    	  <!-- Collapse button -->
+		  <a data-toggle="collapse" href="#collapseAST" aria-expanded="true" aria-controls="collapseAST">
+	        <h3><span class="glyphicon glyphicon-plus-sign glyphicon-orange" aria-hidden="true"></span> AST</h3>
+	      </a>
+	      <!-- End collapse button -->
     	</div>
 	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
@@ -79,9 +83,13 @@
 		      <p><%= @po_playerteamdata[0]["AST"] %> AST</p>
 		    </div>
 		  </div>
-	    </div><!-- END overview-bars -->    	
-	  </div><!-- END AST -->
+	    </div>
+	    <!-- END overview-bars -->    	
+	  </div>
+	  <!-- END AST -->
 
+	  <!-- Start collapse -->
+	  <div class="collapse" id="collapseAST">
 	  <!-- PASSES -->
 	  <div class="row">
     	<div class="col-md-5 stat-name-orange">
@@ -106,11 +114,17 @@
 		  </div>
 	    </div><!-- END overview-bars -->    	
 	  </div><!-- END PASSES -->
+	  </div>
+	  <!-- END collapse -->
 
 	  <!-- REB -->
 	  <div class="row">
     	<div class="col-md-5 stat-name-lt-blue">
-	        <h3>REB</h3>
+    	  <!-- Collapse button -->
+		  <a data-toggle="collapse" href="#collapseREB" aria-expanded="true" aria-controls="collapseREB">
+	        <h3><span class="glyphicon glyphicon-plus-sign glyphicon-lt-blue" aria-hidden="true"></span> REB</h3>
+	      </a>
+	      <!-- End collapse button -->
     	</div>
 	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
@@ -129,6 +143,8 @@
 	    </div><!-- END overview-bars -->    	
 	  </div><!-- END REB -->
 
+	  <!-- Start collapse -->
+	  <div class="collapse" id="collapseREB">
 	  <!-- OREB -->
 	  <div class="row">
     	<div class="col-md-5 stat-name-lt-blue">
@@ -172,11 +188,17 @@
 		  </div>
 	    </div><!-- END overview-bars -->    	
 	  </div><!-- END DREB -->
+	  </div>
+	  <!-- END collapse -->
 
 	  <!-- POINTS -->
 	  <div class="row">
     	<div class="col-md-5 stat-name-green">
-	        <h3>Points</h3>
+    	  <!-- Collapse button -->
+		  <a data-toggle="collapse" href="#collapsePTS" aria-expanded="true" aria-controls="collapsePTS">
+	        <h3><span class="glyphicon glyphicon-plus-sign glyphicon-green" aria-hidden="true"></span> PTS</h3>
+	      </a>
+	      <!-- End collapse button -->
     	</div>
 	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
@@ -195,6 +217,8 @@
 	    </div><!-- END overview-bars -->    	
 	  </div><!-- END POINTS -->
 
+	  <!-- Start collapse -->
+	  <div class="collapse" id="collapsePTS">
 	  <!-- FGM -->
 	  <div class="row">
     	<div class="col-md-5 stat-name-green">
@@ -326,6 +350,8 @@
 		  </div>
 	    </div><!-- END overview-bars -->    	
 	  </div><!-- END FTA -->
+	  </div>
+	  <!-- END collapse -->
 
 	  <!-- STL -->
 	  <div class="row">
