@@ -1,5 +1,5 @@
 .main {
-	//margin-top: 350px;
+	margin-top: 70px;
 }
 
 .full-header {
@@ -16,7 +16,7 @@
 
 .page-id-header p {
   font-size: 19px;
-  font-weight: 500;
+  font-weight: 700;
   padding: 0px;
   text-transform: uppercase;
 }
@@ -48,12 +48,12 @@
 
 .page-sub-nav {
   color: #777;
-  background-color: #E39D44;
-  padding: 3px 10%;
-  height: 5px;
-  border-left: 1px solid #DF8936;
-  border-right: 1px solid #DF8936;
-  border-bottom: 2px solid #DF8936;
+  //background-color: #F9F9F9;
+  padding: 3px 0px;
+  height: 45px;
+  border-top: 2px solid #F9F9F9;
+  text-align: center;
+  //border-bottom: 2px solid #DF8936;
   //border-radius: 0px 0px 5px 5px;
 }
 
@@ -68,13 +68,14 @@
 
 
 .player-page-info {
-	margin-top: 25px;	
+	margin-top: 25px;
+	//padding-left: 20px;	
 
 }
 
 .player-page-info img {
 	position: relative;
-	bottom: -12px;	
+	top: 0px;	
 }
 
 .player-page-info p {
@@ -102,7 +103,6 @@
 
 .stat-logo {
   margin-top: 40px;
-  margin-left: 20px;
 }
 
 .stat-name {
@@ -150,10 +150,12 @@
 
 .overview-bars-first {
   margin-top: 20px;
+  padding-right: 20px;
 }
 
 .overview-bars {
   margin-top: 75px;
+  padding-right: 20px;
 }
 
 .player-data {

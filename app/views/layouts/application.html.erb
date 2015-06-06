@@ -18,13 +18,13 @@
   </div>
     <!-- Player Info -->
     <div class="row player-well">
-    <div class="col-md-3 col-md-offset-1 player-page-profile">
+    <div class="col-md-4 player-page-profile">
       <div style="width: 100%">
       <img src="http://stats.nba.com/media/players/230x185/<%= @po_playerdata[0]["PERSON_ID"] %>.png" width="200px">
       </div>
     </div> 
 	
-    <div class="col-md-3 player-page-info">
+    <div class="col-md-4 player-page-info">
       <p><%= (@po_PlayerTotalsdata[0]["PTS"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> PTS / <%= (@po_PlayerTotalsdata[0]["REB"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> REB / <%= (@po_PlayerTotalsdata[0]["AST"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> AST</p>
       <img src="http://stats.nba.com/media/img/teams/logos/<%= @po_playerdata[0]["TEAM_ABBREVIATION"] %>_logo.svg" width="90" style="float:left;">
       <h5><%= @po_playerdata[0]["TEAM_CITY"] %> <%= @po_playerdata[0]["TEAM_NAME"] %>
@@ -56,7 +56,6 @@
 	</div> <!--end row-->
     <!-- End Player Info -->
   <div class="page-sub-nav col-md-12">          
- 	
   </div> <!-- End page-sub-nav -->
 </div>
 

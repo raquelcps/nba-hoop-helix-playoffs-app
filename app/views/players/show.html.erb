@@ -1,13 +1,13 @@
 
 <!-- Main Pane -->
 <div class="main">
-	<div class="col-md-6 col-md-offset-1">
+	<div class="col-md-8">
 	  <!-- MINUTES -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-lt-blue">
+    	<div class="col-md-5 stat-name">
 	        <h3>Minutes</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars-first">
+	  	<div class="col-md-6 overview-bars-first">
 		  <div class="row" style="margin-bottom: 15px;">
 		  	<div class="col-xs-6 player-data">
 		  		<h4><%= @po_playerdata[0]["DISPLAY_FI_LAST"] %></h4>
@@ -17,12 +17,12 @@
 		  	</div>
 		  </div>
 	      <div class="progress">
-	          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["MIN"].to_f / (@po_playerteamdata[0]["MIN"] * 5).to_f * 100 %>%;">
+	          <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["MIN"].to_f / (@po_playerteamdata[0]["MIN"] * 5).to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["MIN"].to_f / (@po_playerteamdata[0]["MIN"] * 5).to_f * 100).to_i %>%
               </div>
           </div>
           <div class="row">
-		    <div class="col-xs-6 player-data-lt-blue">
+		    <div class="col-xs-6 player-data">
 		      <p><%= @po_PlayerTotalsdata[0]["MIN"].round %> Minutes</p>
 		    </div>
 		    <div class="col-xs-6 team-data" style="text-align:right">
@@ -37,17 +37,17 @@
 
 	   <!-- TOUCHES -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-lt-blue">
+    	<div class="col-md-5 stat-name">
 	        <h3>Touches</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">
+	  	<div class="col-md-6 overview-bars">
 	      <div class="progress">
-	          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_player_touches_total[0][15].to_f / @po_team_touches_total[0]["TCH_TOT"].to_f * 100 %>%;">      
+	          <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_player_touches_total[0][15].to_f / @po_team_touches_total[0]["TCH_TOT"].to_f * 100 %>%;">      
                     <%= (@po_player_touches_total[0][15].to_f / @po_team_touches_total[0]["TCH_TOT"].to_f * 100).to_i %>%
               </div>
           </div>
           <div class="row">
-		    <div class="col-xs-6 player-data-lt-blue">
+		    <div class="col-xs-6 player-data">
 		      <p><%= @po_player_touches_total[0][15] %> Touches</p>
 		    </div>
 		    <div class="col-xs-6 team-data" style="text-align:right">
@@ -59,10 +59,10 @@
 
 	  <!-- AST -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-orange">
+    	<div class="col-md-5 stat-name-orange">
 	        <h3>AST</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
 	          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["AST"].to_f / @po_playerteamdata[0]["AST"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["AST"].to_f / @po_playerteamdata[0]["AST"].to_f * 100).to_i %>%
@@ -73,7 +73,7 @@
           </div>
           <div class="row">
 		    <div class="col-xs-6 player-data-orange">
-		      <p><%= @po_PlayerTotalsdata[0]["AST"] %> Assists Made<br/><span class="player-data-dk-orange"> <%= @po_player_total_ast_recd.inject(:+) %> Assists received</span></p>
+		      <p><%= @po_PlayerTotalsdata[0]["AST"] %> Assists Made<br/><span class="player-data-dk-orange"> <%= @po_player_total_ast_recd.inject(:+) %> Assists Received</span></p>
 		    </div>
 		    <div class="col-xs-6 team-data" style="text-align:right">
 		      <p><%= @po_playerteamdata[0]["AST"] %> AST</p>
@@ -84,10 +84,10 @@
 
 	  <!-- PASSES -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-orange">
+    	<div class="col-md-5 stat-name-orange">
 	        <h3>PASSES</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
 	          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_player_total_passes.inject(:+).to_f / @po_team_passes_total.inject(:+).to_f * 100 %>%;">
 	           <%= (@po_player_total_passes.inject(:+).to_f / @po_team_passes_total.inject(:+).to_f * 100).to_i %>% 
@@ -98,7 +98,7 @@
           </div>
           <div class="row">
 		    <div class="col-xs-6 player-data-orange">
-		      <p><%= @po_player_total_passes.inject(:+) %> Passes Made<br/><span class="player-data-dk-orange"> <%= @po_player_total_pass_recd.inject(:+) %> Passes received</span></p>
+		      <p><%= @po_player_total_passes.inject(:+) %> Passes Made<br/><span class="player-data-dk-orange"> <%= @po_player_total_pass_recd.inject(:+) %> Passes Received</span></p>
 		    </div>
 		    <div class="col-xs-6 team-data" style="text-align:right">
 		      <p><%= @po_team_passes_total.inject(:+) %> Passes</p>
@@ -109,17 +109,17 @@
 
 	  <!-- REB -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name">
+    	<div class="col-md-5 stat-name-lt-blue">
 	        <h3>REB</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
-	          <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["REB"].to_f / @po_playerteamdata[0]["REB"].to_f * 100 %>%;">
+	          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["REB"].to_f / @po_playerteamdata[0]["REB"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["REB"].to_f / @po_playerteamdata[0]["REB"].to_f * 100).to_i %>%
               </div>
           </div>
           <div class="row">
-		    <div class="col-xs-6 player-data">
+		    <div class="col-xs-6 player-data-lt-blue">
 		      <p><%= @po_PlayerTotalsdata[0]["REB"] %> REB</p>
 		    </div>
 		    <div class="col-xs-6 team-data" style="text-align:right">
@@ -131,17 +131,17 @@
 
 	  <!-- OREB -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name">
+    	<div class="col-md-5 stat-name-lt-blue">
 	        <h3>OREB</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
-	          <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["OREB"].to_f / @po_playerteamdata[0]["OREB"].to_f * 100 %>%;">
+	          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["OREB"].to_f / @po_playerteamdata[0]["OREB"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["OREB"].to_f / @po_playerteamdata[0]["OREB"].to_f * 100).to_i %>%
               </div>
           </div>
           <div class="row">
-		    <div class="col-xs-6 player-data">
+		    <div class="col-xs-6 player-data-lt-blue">
 		      <p><%= @po_PlayerTotalsdata[0]["OREB"] %> OREB</p>
 		    </div>
 		    <div class="col-xs-6 team-data" style="text-align:right">
@@ -153,17 +153,17 @@
 
 	  <!-- DREB -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name">
+    	<div class="col-md-5 stat-name-lt-blue">
 	        <h3>DREB</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
-	          <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["DREB"].to_f / @po_playerteamdata[0]["DREB"].to_f * 100 %>%;">
+	          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["DREB"].to_f / @po_playerteamdata[0]["DREB"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["DREB"].to_f / @po_playerteamdata[0]["DREB"].to_f * 100).to_i %>%
               </div>
           </div>
           <div class="row">
-		    <div class="col-xs-6 player-data">
+		    <div class="col-xs-6 player-data-lt-blue">
 		      <p><%= @po_PlayerTotalsdata[0]["DREB"] %> DREB</p>
 		    </div>
 		    <div class="col-xs-6 team-data" style="text-align:right">
@@ -175,10 +175,10 @@
 
 	  <!-- POINTS -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-green">
+    	<div class="col-md-5 stat-name-green">
 	        <h3>Points</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
 	          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["PTS"].to_f / @po_playerteamdata[0]["PTS"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["PTS"].to_f / @po_playerteamdata[0]["PTS"].to_f * 100).to_i %>%
@@ -197,10 +197,10 @@
 
 	  <!-- FGM -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-green">
+    	<div class="col-md-5 stat-name-green">
 	        <h3>FGM</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
 	          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["FGM"].to_f / @po_playerteamdata[0]["FGM"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["FGM"].to_f / @po_playerteamdata[0]["FGM"].to_f * 100).to_i %>%
@@ -219,10 +219,10 @@
 
 	  <!-- FGA -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-green">
+    	<div class="col-md-5 stat-name-green">
 	        <h3>FGA</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
 	          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["FGA"].to_f / @po_playerteamdata[0]["FGA"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["FGA"].to_f / @po_playerteamdata[0]["FGA"].to_f * 100).to_i %>%
@@ -241,10 +241,10 @@
 
 	  <!-- FG3M -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-green">
+    	<div class="col-md-5 stat-name-green">
 	        <h3>FG3M</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
 	          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["FG3M"].to_f / @po_playerteamdata[0]["FG3M"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["FG3M"].to_f / @po_playerteamdata[0]["FG3M"].to_f * 100).to_i %>%
@@ -263,10 +263,10 @@
 
 	  <!-- FG3A -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-green">
+    	<div class="col-md-5 stat-name-green">
 	        <h3>FG3A</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
 	          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["FG3A"].to_f / @po_playerteamdata[0]["FG3A"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["FG3A"].to_f / @po_playerteamdata[0]["FG3A"].to_f * 100).to_i %>%
@@ -285,10 +285,10 @@
 
 	  <!-- FTM -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-green">
+    	<div class="col-md-5 stat-name-green">
 	        <h3>FTM</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
 	          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["FTM"].to_f / @po_playerteamdata[0]["FTM"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["FTM"].to_f / @po_playerteamdata[0]["FTM"].to_f * 100).to_i %>%
@@ -307,10 +307,10 @@
 
 	  <!-- FTA -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-green">
+    	<div class="col-md-5 stat-name-green">
 	        <h3>FTA</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
 	          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["FTA"].to_f / @po_playerteamdata[0]["FTA"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["FTA"].to_f / @po_playerteamdata[0]["FTA"].to_f * 100).to_i %>%
@@ -329,10 +329,10 @@
 
 	  <!-- STL -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-purple">
+    	<div class="col-md-5 stat-name-purple">
 	        <h3>STL</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
 	          <div class="progress-bar progress-bar-purple" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["STL"].to_f / @po_playerteamdata[0]["STL"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["STL"].to_f / @po_playerteamdata[0]["STL"].to_f * 100).to_i %>%
@@ -351,10 +351,10 @@
 
 	  <!-- BLK -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-purple">
+    	<div class="col-md-5 stat-name-purple">
 	        <h3>BLK</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
 	          <div class="progress-bar progress-bar-purple" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["BLK"].to_f / @po_playerteamdata[0]["BLK"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["BLK"].to_f / @po_playerteamdata[0]["BLK"].to_f * 100).to_i %>%
@@ -373,10 +373,10 @@
 
 	  <!-- PFD -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-purple">
+    	<div class="col-md-5 stat-name-purple">
 	        <h3>PFD</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
 	          <div class="progress-bar progress-bar-purple" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["PFD"].to_f / @po_playerteamdata[0]["PFD"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["PFD"].to_f / @po_playerteamdata[0]["PFD"].to_f * 100).to_i %>%
@@ -395,10 +395,10 @@
 
 	  <!-- TOV -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-red">
+    	<div class="col-md-5 stat-name-red">
 	        <h3>TOV</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
 	          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["TOV"].to_f / @po_playerteamdata[0]["TOV"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["TOV"].to_f / @po_playerteamdata[0]["TOV"].to_f * 100).to_i %>%
@@ -417,10 +417,10 @@
 
 	  <!-- BLKA -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-red">
+    	<div class="col-md-5 stat-name-red">
 	        <h3>BLKA</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
 	          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["BLKA"].to_f / @po_playerteamdata[0]["BLKA"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["BLKA"].to_f / @po_playerteamdata[0]["BLKA"].to_f * 100).to_i %>%
@@ -439,10 +439,10 @@
 
 	  <!-- PF -->
 	  <div class="row">
-    	<div class="col-md-4 stat-name-red">
+    	<div class="col-md-5 stat-name-red">
 	        <h3>PF</h3>
     	</div>
-	  	<div class="col-md-8 overview-bars">	  
+	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
 	          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["PF"].to_f / @po_playerteamdata[0]["PF"].to_f * 100 %>%;">
 	           <%= (@po_PlayerTotalsdata[0]["PF"].to_f / @po_playerteamdata[0]["PF"].to_f * 100).to_i %>%
