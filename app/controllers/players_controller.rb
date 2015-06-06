@@ -142,7 +142,6 @@ class PlayersController < ApplicationController
        po_team_touches = Unirest.get("http://stats.nba.com/js/data/sportvu/2014/touchesTeamDataPost.json")
        a = po_team_touches.body
        b = a["resultSets"]
-       p "TEAM RESULT SETS"
        c = b[0]
        d = c["headers"]
        e = c["rowSet"]
@@ -160,5 +159,19 @@ class PlayersController < ApplicationController
 
        @po_player_touches_total = po_player_touches.select{ |player| player[0].to_i == @po_playerdata[0]["PERSON_ID"] }
      	  
+       #Team roster
+       po_team_rosters = Unirest.get("http://stats.nba.com/stats/teamplayerdashboard?DateFrom=&DateTo=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlusMinus=N&Rank=N&Season=2014-15&SeasonSegment=&SeasonType=Playoffs&TeamID=#{@po_playerdata[0]["TEAM_ID"]}&VsConference=&VsDivision=")
+       a = po_team_rosters.body
+       b = a["resultSets"]
+       c = b[1]
+       d = c["headers"]
+       e = c["rowSet"]
+
+       @po_team_rosters_array = []
+       e.each do |row|
+       	hash = Hash[*d.zip(row).flatten]
+       	@po_team_rosters_array << hash 
+       end
+		
 	end #Show
 end

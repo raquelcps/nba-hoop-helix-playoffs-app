@@ -61,7 +61,7 @@
 	  <div class="row">
     	<div class="col-md-5 stat-name-orange">
     	  <!-- Collapse button -->
-		  <a data-toggle="collapse" href="#collapseAST" aria-expanded="true" aria-controls="collapseAST">
+		  <a data-toggle="collapse" href="#collapseAST" aria-expanded="true" aria-controls="collapseAST" title="Expand to see Passes">
 	        <h3><span class="glyphicon glyphicon-plus-sign glyphicon-orange" aria-hidden="true"></span> AST</h3>
 	      </a>
 	      <!-- End collapse button -->
@@ -121,7 +121,7 @@
 	  <div class="row">
     	<div class="col-md-5 stat-name-lt-blue">
     	  <!-- Collapse button -->
-		  <a data-toggle="collapse" href="#collapseREB" aria-expanded="true" aria-controls="collapseREB">
+		  <a data-toggle="collapse" href="#collapseREB" aria-expanded="true" aria-controls="collapseREB" title="Expand to see Offensive and Defensive Rebounds">
 	        <h3><span class="glyphicon glyphicon-plus-sign glyphicon-lt-blue" aria-hidden="true"></span> REB</h3>
 	      </a>
 	      <!-- End collapse button -->
@@ -195,7 +195,7 @@
 	  <div class="row">
     	<div class="col-md-5 stat-name-green">
     	  <!-- Collapse button -->
-		  <a data-toggle="collapse" href="#collapsePTS" aria-expanded="true" aria-controls="collapsePTS">
+		  <a data-toggle="collapse" href="#collapsePTS" aria-expanded="true" aria-controls="collapsePTS" title="Expand to see FG, FG3, and FT makes and attempts">
 	        <h3><span class="glyphicon glyphicon-plus-sign glyphicon-green" aria-hidden="true"></span> PTS</h3>
 	      </a>
 	      <!-- End collapse button -->
@@ -491,7 +491,9 @@
 		<p>Teams played against, smaller logos</p>
     		<img src="http://stats.nba.com/media/img/teams/logos/<%= @po_playerdata[0]["TEAM_ABBREVIATION"] %>_logo.svg" width="90">
     	<p>will link to round</p>
-    	<p>also roster to link to teammates</p>
-    	</div>
+    	<% @po_team_rosters_array.each do |hash| %>
+    	<p><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a></p>
+    	<% end %>
+
 	</div>
 </div><!-- END Main Pane -->
