@@ -1,0 +1,121 @@
+
+<!-- Condition display data only if team has played that round -->
+<% if @rd_player_dashboard_totals.body["resultSets"][0]["rowSet"] != [] %>
+
+<!-- Main Pane -->
+<div class="main">
+	<div class="col-md-10 col-md-offset-1">
+	  <!-- MINUTES -->
+	  <div class="row">
+    	<div class="col-md-2 stat-name">
+	        <h3>Minutes</h3>
+    	</div>
+	  	<div class="col-md-6 overview-bars-first">
+		  <div class="row" style="margin-bottom: 15px;">
+		  	<div class="col-xs-6 player-data">
+		  		<h4><%= @po_playerdata[0]["DISPLAY_FI_LAST"] %></h4>
+		  	</div>
+		  	<div class="col-xs-6 team-data" style="text-align:right;">
+		  		<h4><%= @po_playerdata[0]["TEAM_ABBREVIATION"] %></h4>
+		  	</div>
+		  </div>
+	      <div class="progress">
+	          <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["MIN"].to_f / (@po_playerteamdata[0]["MIN"] * 5).to_f * 100 %>%;">
+	           <%= (@po_PlayerTotalsdata[0]["MIN"].to_f / (@po_playerteamdata[0]["MIN"] * 5).to_f * 100).to_i %>%
+              </div>
+          </div>
+          <div class="row">
+		    <div class="col-xs-6 player-data">
+		      <p><%= @po_PlayerTotalsdata[0]["MIN"].round %> Minutes</p>
+		    </div>
+		    <div class="col-xs-6 team-data" style="text-align:right">
+		      <p><%= @po_playerteamdata[0]["MIN"].round * 5 %> Minutes</p>
+		    </div>
+		  </div>
+	    </div><!-- END overview-bars -->
+    	<div class="col-md-3 stat-logo">
+    		<img src="http://stats.nba.com/media/img/teams/logos/<%= @po_playerdata[0]["TEAM_ABBREVIATION"] %>_logo.svg" width="90">
+    	</div>
+	  </div><!-- END MINUTES -->
+
+	  <!-- POINTS -->
+	  <div class="row">
+    	<div class="col-md-2 stat-name">
+	        <h3>Points</h3>
+    	</div>
+	  	<div class="col-md-6 overview-bars">	  
+	      <div class="progress">
+	          <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["PTS"].to_f / (@po_playerteamdata[0]["PTS"] * 5).to_f * 100 %>%;">
+	           <%= (@po_PlayerTotalsdata[0]["PTS"].to_f / (@po_playerteamdata[0]["PTS"] * 5).to_f * 100).to_i %>%
+              </div>
+          </div>
+          <div class="row">
+		    <div class="col-xs-6 player-data">
+		      <p><%= @po_PlayerTotalsdata[0]["PTS"].round %> Points</p>
+		    </div>
+		    <div class="col-xs-6 team-data" style="text-align:right">
+		      <p><%= @po_playerteamdata[0]["PTS"].round * 5 %> Points</p>
+		    </div>
+		  </div>
+	    </div><!-- END overview-bars -->
+    	<div class="col-md-3 stat-logo">
+    		<img src="http://stats.nba.com/media/img/teams/logos/<%= @po_playerdata[0]["TEAM_ABBREVIATION"] %>_logo.svg" width="90">
+    	</div>
+	  </div><!-- END POINTS -->
+
+	  <!-- FGM -->
+	  <div class="row">
+    	<div class="col-md-2 stat-name">
+	        <h3>FGM</h3>
+    	</div>
+	  	<div class="col-md-6 overview-bars">	  
+	      <div class="progress">
+	          <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["FGM"].to_f / (@po_playerteamdata[0]["FGM"] * 5).to_f * 100 %>%;">
+	           <%= (@po_PlayerTotalsdata[0]["FGM"].to_f / (@po_playerteamdata[0]["FGM"] * 5).to_f * 100).to_i %>%
+              </div>
+          </div>
+          <div class="row">
+		    <div class="col-xs-6 player-data">
+		      <p><%= @po_PlayerTotalsdata[0]["FGM"].round %> FGM</p>
+		    </div>
+		    <div class="col-xs-6 team-data" style="text-align:right">
+		      <p><%= @po_playerteamdata[0]["FGM"].round * 5 %> FGM</p>
+		    </div>
+		  </div>
+	    </div><!-- END overview-bars -->
+    	<div class="col-md-3 stat-logo">
+    		<img src="http://stats.nba.com/media/img/teams/logos/<%= @po_playerdata[0]["TEAM_ABBREVIATION"] %>_logo.svg" width="90">
+    	</div>
+	  </div><!-- END FGM -->
+
+	  <!-- FGA -->
+	  <div class="row">
+    	<div class="col-md-2 stat-name">
+	        <h3>FGA</h3>
+    	</div>
+	  	<div class="col-md-6 overview-bars">	  
+	      <div class="progress">
+	          <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["FGA"].to_f / (@po_playerteamdata[0]["FGA"] * 5).to_f * 100 %>%;">
+	           <%= (@po_PlayerTotalsdata[0]["FGA"].to_f / (@po_playerteamdata[0]["FGA"] * 5).to_f * 100).to_i %>%
+              </div>
+          </div>
+          <div class="row">
+		    <div class="col-xs-6 player-data">
+		      <p><%= @po_PlayerTotalsdata[0]["FGA"].round %> FGA</p>
+		    </div>
+		    <div class="col-xs-6 team-data" style="text-align:right">
+		      <p><%= @po_playerteamdata[0]["FGA"].round * 5 %> FGA</p>
+		    </div>
+		  </div>
+	    </div><!-- END overview-bars -->
+    	<div class="col-md-3 stat-logo">
+    		<img src="http://stats.nba.com/media/img/teams/logos/<%= @po_playerdata[0]["TEAM_ABBREVIATION"] %>_logo.svg" width="90">
+    	</div>
+	  </div><!-- END FGM -->
+
+	</div>
+<!-- Message when the condition isn't met -->	
+<% else %>
+<h4> no data </h4>
+<% end %> 
+</div><!-- END Main Pane -->

@@ -1,0 +1,39 @@
+
+<!-- Condition display data only if team has played that round -->
+<% if @cf_player_dashboard_totals.body["resultSets"][0]["rowSet"] != [] %>      
+      <h4><%= (@po_PlayerTotalsdata[0]["PTS"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> PTS / <%= (@po_PlayerTotalsdata[0]["REB"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> REB / <%= (@po_PlayerTotalsdata[0]["AST"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> AST</h4>       
+    </div> 
+    <div class="col-md-3 player-page-info">
+      <img src="http://stats.nba.com/media/img/teams/logos/<%= @po_playerdata[0]["TEAM_ABBREVIATION"] %>_logo.svg" width="100">
+      <h5><%= @po_playerdata[0]["TEAM_CITY"] %> <%= @po_playerdata[0]["TEAM_NAME"] %>
+      </h5>
+      <h5>Pos: <%= @po_playerdata[0]["POSITION"] %> | Exp: <%= @po_playerdata[0]["SEASON_EXP"] %> yrs</h5>
+      <h5>Record: <%= @po_playerteamdata[0]["W"] %>W - <%= @po_playerteamdata[0]["L"] %>L</h5>
+      <h5>Games Played: <%= @po_PlayerTotalsdata[0]["GP"] %></h5>
+      
+    </div>
+    <!-- End Player Info -->
+
+	<div class="col-md-11">
+	  <div class="row" style="margin: 20px 0px">
+	  	<div class="col-md-10 col-md-offset-1 overview-bars">
+	        <h4>Minutes</h4>
+	        <div class="progress">
+	            <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_PlayerTotalsdata[0]["MIN"].to_f / (@po_playerteamdata[0]["MIN"] * 5).to_f * 100 %>%;">
+	              <%= (@po_PlayerTotalsdata[0]["MIN"].to_f / (@po_playerteamdata[0]["MIN"] * 5).to_f * 100).to_i %>%
+	            </div>
+	         </div>
+	    </div>
+	    <div class="col-md-5 col-md-offset-1">
+	      <p><%= @po_playerdata[0]["DISPLAY_FIRST_LAST"] %>:<br/> <%= @po_PlayerTotalsdata[0]["MIN"].round %> Minutes</p>
+	    </div>
+	    <div class="col-md-5" style="text-align:right">
+	      <p><%= @po_playerdata[0]["TEAM_CITY"] %> <%= @po_playerdata[0]["TEAM_NAME"] %>:<br/> <%= @po_playerteamdata[0]["MIN"].round * 5 %> Minutes</p>
+	    </div>
+	  </div><!-- END Row -->
+	</div>
+<!-- Message when the condition isn't met -->	
+<% else %>
+<h4> no data </h4>
+<% end %> 
+</div><!-- END Main Pane -->

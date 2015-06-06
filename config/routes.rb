@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get '/players' => 'players#index'
   get '/players/:person_id' => 'players#show'
+  get '/players/round1/:person_id' => 'rounds#show'
+  get '/players/semis/:person_id' => 'semifinals#show'
+  get '/players/conf_finals/:person_id' => 'conffinals#show'
+  get '/players/finals/:person_id' => 'finals#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
