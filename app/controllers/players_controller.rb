@@ -151,7 +151,9 @@ class PlayersController < ApplicationController
      	 hash = Hash[*d.zip(row).flatten]
      	 po_team_touches_array << hash 
        end
-
+p "team touches"
+p po_team_touches_array[0]
+p e
        @po_team_touches_total = po_team_touches_array.select {|team| team["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"] }
 
        #Player Touches
@@ -159,7 +161,7 @@ class PlayersController < ApplicationController
 
        @po_player_touches_total = po_player_touches.select{ |player| player[0].to_i == @po_playerdata[0]["PERSON_ID"] }
      	  
-       #Team roster
+       #Team roster - Used teamplayerdashboard instead of commonteamroster to show only players who have played in playoffs
        po_team_rosters = Unirest.get("http://stats.nba.com/stats/teamplayerdashboard?DateFrom=&DateTo=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlusMinus=N&Rank=N&Season=2014-15&SeasonSegment=&SeasonType=Playoffs&TeamID=#{@po_playerdata[0]["TEAM_ID"]}&VsConference=&VsDivision=")
        a = po_team_rosters.body
        b = a["resultSets"]
@@ -172,6 +174,14 @@ class PlayersController < ApplicationController
        	hash = Hash[*d.zip(row).flatten]
        	@po_team_rosters_array << hash 
        end
-		
+
+       #Teams in playoffs
+       @po_teams = []
+       po_team_touches_array.each do |team|
+       	@po_teams << team["TEAM_ID"]
+       end
+		p @po_teams
 	end #Show
+
+
 end

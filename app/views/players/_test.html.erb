@@ -1,0 +1,25 @@
+<h5>Select a teammate</h5>
+	<!-- Single button -->
+	<div class="btn-group">
+	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+	    <%= @po_playerdata[0]["TEAM_CITY"] %> <%= @po_playerdata[0]["TEAM_NAME"] %> <span class="caret"></span>
+	  </button>
+	    	
+	  <ul class="dropdown-menu" role="menu">
+	    <% @po_team_rosters_array.each do |hash| %>
+	      <li><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a></li>
+	   	<% end %>  
+	  </ul>
+	</div>
+
+	<div class="btn-group">
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+	    Select another team <span class="caret"></span>
+	  </button>
+	    	
+	  <ul class="dropdown-menu" role="menu">
+	    <% @po_teams.each do |hash| %>
+	      <li><a href="/teams/<%= hash %>"><%= hash %></a></li>
+	   	<% end %>  
+	  </ul>
+	</div>

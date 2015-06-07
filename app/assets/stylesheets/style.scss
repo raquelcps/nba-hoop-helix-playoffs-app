@@ -1,3 +1,11 @@
+.spinner {
+	position:absolute;
+        font-family: FontAwesome;
+        top:0;
+        left:-5px;
+        content: "\25AE";
+}
+
 .main {
 	margin-top: 70px;
 }
@@ -102,7 +110,8 @@
 }
 
 .stat-logo {
-  margin-top: 40px;
+  margin-top: 30px;
+  color: #A0A5AD;
 }
 
 .stat-name {
