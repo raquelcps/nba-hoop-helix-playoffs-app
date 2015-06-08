@@ -5,7 +5,58 @@
 <!-- Main Pane -->
 <div class="main">
 	<div class="page-sub-nav">
-	  <h4>Team Contribution: Round 1<h4>  	
+	  <h4>Team Contribution: Round 1 
+<% if current_page?(controller: 'rounds', action: 'show') %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "ATL" %>
+		  vs BKN</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "BOS" %>
+		  vs CLE</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "BKN" %>
+	 	  vs ATL</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "CHI" %>
+		  vs MIL</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "CLE" %>
+		  vs BOS</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "MIL" %>
+		  vs CHI</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "TOR" %>
+		  vs WAS</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "WAS" %>
+		  vs TOR</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "DAL" %>
+		  vs HOU</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "GSW" %>
+		  vs NOP</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "HOU" %>
+		  vs DAL</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "LAC" %>
+		  vs SAS</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "MEM" %>
+		  vs POR</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "NOP" %>
+		  vs GSW</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "POR" %>
+		  vs MEM</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "SAS" %>
+		  vs LAC</h4>
+		<% end %>
+	<% end %>
+	  	  	
 	</div>
 	<div class="col-md-8">
 	  <!-- MINUTES -->
@@ -32,7 +83,7 @@
 		      <p><%= @po_PlayerTotalsdata[0]["MIN"].round %> Minutes</p>
 		    </div>
 		    <div class="col-xs-6 team-data" style="text-align:right">
-		      <p><%= @po_playerteamdata[0]["MIN"].round * 5 %> Minutes</p>
+		      <p><%= @po_playerteamdata[0]["MIN"].round * 5 %> Minutes *</p>
 		    </div>
 		  </div>
 	    </div><!-- END overview-bars -->

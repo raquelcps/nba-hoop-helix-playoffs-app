@@ -27,7 +27,7 @@
 	
     <div class="col-md-4 player-page-info">
       <p><%= (@po_PlayerTotalsdata[0]["PTS"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> PTS / <%= (@po_PlayerTotalsdata[0]["REB"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> REB / <%= (@po_PlayerTotalsdata[0]["AST"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> AST</p>
-      <img src="http://stats.nba.com/media/img/teams/logos/<%= @po_playerdata[0]["TEAM_ABBREVIATION"] %>_logo.svg" width="90" style="float:left;">
+      <img src="http://stats.nba.com/media/img/teams/logos/<%= @po_playerdata[0]["TEAM_ABBREVIATION"] %>_logo.svg" width="90" style="float:left; margin-right:10px;">
       <h5><%= @po_playerdata[0]["TEAM_CITY"] %> <%= @po_playerdata[0]["TEAM_NAME"] %>
       </h5>
       <h5>Pos: <%= @po_playerdata[0]["POSITION"] %> | Exp: <%= @po_playerdata[0]["SEASON_EXP"] %> yrs</h5>
@@ -37,7 +37,7 @@
   	
     </div>
     <div class="col-md-3 player-page-buttons"> 
-    <ul class="nav nav-pills nav-stacked">
+    <ul class="nav nav-pills nav-stacked" onclick="dosomething();">
   	  <li class="<%= 'active' if current_page?(controller: 'players', action: 'show') %>" role="presentation" id="all"><a href="/players/<%= @po_playerdata[0]["PERSON_ID"] %>">All</a></li>	
       <% if @rd_player_dashboard_totals.body["resultSets"][0]["rowSet"] != [] %>
 	      <li class="<%= 'active' if current_page?(controller: 'rounds', action: 'show') %>" role="presentation" id="round1"><a href="/players/round1/<%= @po_playerdata[0]["PERSON_ID"] %>">Round 1</a></li>

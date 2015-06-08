@@ -1,104 +1,4 @@
-	<% if current_page?(controller: 'rounds', action: 'show') %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "ATL" %>
-		  <h4>vs BKN</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "BOS" %>
-		  <h4>vs CLE</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "BKN" %>
-	 	  <h4>vs ATL</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "CHI" %>
-		  <h4>vs MIL</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "CLE" %>
-		  <h4>vs BOS</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "MIL" %>
-		  <h4>vs CHI</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "TOR" %>
-		  <h4>vs WAS</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "WAS" %>
-		  <h4>vs TOR</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "DAL" %>
-		  <h4>vs HOU</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "GSW" %>
-		  <h4>vs NOP</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "HOU" %>
-		  <h4>vs DAL</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "LAC" %>
-		  <h4>vs SAS</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "MEM" %>
-		  <h4>vs POR</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "NOP" %>
-		  <h4>vs GSW</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "POR" %>
-		  <h4>vs MEM</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "SAS" %>
-		  <h4>vs LAC</h4>
-		<% end %>
-	<% end %>
 
-	<% if current_page?(controller: 'semifinals', action: 'show') %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "ATL" %>
-		  <h4>vs WAS</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "CHI" %>
-		  <h4>vs CLE</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "CLE" %>
-		  <h4>vs CHI</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "WAS" %>
-		  <h4>vs ATL</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "GSW" %>
-		  <h4>vs MEM</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "HOU" %>
-		  <h4>vs LAC</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "LAC" %>
-		  <h4>vs HOU</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "MEM" %>
-		  <h4>vs GSW</h4>
-		<% end %>
-	<% end %>
-
-	<% if current_page?(controller: 'conffinals', action: 'show') %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "ATL" %>
-		  <h4>vs CLE</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "CLE" %>
-		  <h4>vs ATL</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "GSW" %>
-		  <h4>vs HOU</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "HOU" %>
-		  <h4>vs GSW</h4>
-		<% end %>
-	<% end %>
-
-	<% if current_page?(controller: 'finals', action: 'show') %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "CLE" %>
-		  <h4>vs GSW</h4>
-		<% end %>
-		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "GSW" %>
-		  <h4>vs CLE</h4>
-		<% end %>
-	<% end %>
 
 	<!-- Single button -->
 	<!-- <div class="btn-group">
@@ -114,7 +14,7 @@
 	  </ul>
 	</div> -->
 	
-	<table class="table table-bordered">
+	<table class="table table-bordered table-hover">
 		<thead>
 			<th>Teammates</th>
 			
@@ -126,5 +26,21 @@
 		</tbody>
 		<% end %>
 	</table>
+
+     <p style="font-size: 12px;">Only players who have played in the 2015 postseason are listed for their team<p>
+     <hr>
+	  
+	 <!-- Collapse button -->
+     <p style="font-size: 12px;"><a data-toggle="collapse" href="#collapseMINEXPL" aria-expanded="true" aria-controls="collapseMINEXPL" title="Expand for an explanation of how minutes are calculated">
+	       *A note on Minutes <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  
+	      </a><p>
+     <!-- End collapse button -->
+     <!-- Start collapse -->
+  	 <div class="collapse" id="collapseMINEXPL">
+	  	<div class="well well-sm">
+	  		<p style="font-size: 12px;">Minutes are calculated by multiplying:<br/> games played X minutes in a game (regulation or OT) X number of players a team can play at once (5). A player's total minutes are divided by the team's total minutes to get the percentage of how much time that player has been on the court. A single player can take up to 20% of their team's minutes.</p>
+	  	</div>
+	 </div>
+	  <!-- End collapse -->
 
 	

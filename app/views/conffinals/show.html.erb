@@ -5,7 +5,22 @@
 <!-- Main Pane -->
 <div class="main">
 	<div class="page-sub-nav">
-	  <h4>Team Contribution: Conference Finals<h4>  	
+	  <h4>Team Contribution: Conference Finals
+	  	<% if current_page?(controller: 'conffinals', action: 'show') %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "ATL" %>
+		  vs CLE</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "CLE" %>
+		  vs ATL</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "GSW" %>
+		  vs HOU</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "HOU" %>
+		  vs GSW</h4>
+		<% end %>
+	<% end %>
+
 	</div>
 	<div class="col-md-8">
 	  <!-- MINUTES -->
@@ -32,7 +47,7 @@
 		      <p><%= @po_PlayerTotalsdata[0]["MIN"].round %> Minutes</p>
 		    </div>
 		    <div class="col-xs-6 team-data" style="text-align:right">
-		      <p><%= @po_playerteamdata[0]["MIN"].round * 5 %> Minutes</p>
+		      <p><%= @po_playerteamdata[0]["MIN"].round * 5 %> Minutes *</p>
 		    </div>
 		  </div>
 	    </div><!-- END overview-bars -->
