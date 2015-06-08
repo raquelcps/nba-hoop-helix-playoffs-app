@@ -1,0 +1,130 @@
+	<% if current_page?(controller: 'rounds', action: 'show') %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "ATL" %>
+		  <h4>vs BKN</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "BOS" %>
+		  <h4>vs CLE</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "BKN" %>
+	 	  <h4>vs ATL</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "CHI" %>
+		  <h4>vs MIL</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "CLE" %>
+		  <h4>vs BOS</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "MIL" %>
+		  <h4>vs CHI</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "TOR" %>
+		  <h4>vs WAS</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "WAS" %>
+		  <h4>vs TOR</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "DAL" %>
+		  <h4>vs HOU</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "GSW" %>
+		  <h4>vs NOP</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "HOU" %>
+		  <h4>vs DAL</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "LAC" %>
+		  <h4>vs SAS</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "MEM" %>
+		  <h4>vs POR</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "NOP" %>
+		  <h4>vs GSW</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "POR" %>
+		  <h4>vs MEM</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "SAS" %>
+		  <h4>vs LAC</h4>
+		<% end %>
+	<% end %>
+
+	<% if current_page?(controller: 'semifinals', action: 'show') %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "ATL" %>
+		  <h4>vs WAS</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "CHI" %>
+		  <h4>vs CLE</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "CLE" %>
+		  <h4>vs CHI</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "WAS" %>
+		  <h4>vs ATL</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "GSW" %>
+		  <h4>vs MEM</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "HOU" %>
+		  <h4>vs LAC</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "LAC" %>
+		  <h4>vs HOU</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "MEM" %>
+		  <h4>vs GSW</h4>
+		<% end %>
+	<% end %>
+
+	<% if current_page?(controller: 'conffinals', action: 'show') %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "ATL" %>
+		  <h4>vs CLE</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "CLE" %>
+		  <h4>vs ATL</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "GSW" %>
+		  <h4>vs HOU</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "HOU" %>
+		  <h4>vs GSW</h4>
+		<% end %>
+	<% end %>
+
+	<% if current_page?(controller: 'finals', action: 'show') %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "CLE" %>
+		  <h4>vs GSW</h4>
+		<% end %>
+		<% if @po_playerdata[0]["TEAM_ABBREVIATION"] == "GSW" %>
+		  <h4>vs CLE</h4>
+		<% end %>
+	<% end %>
+
+	<!-- Single button -->
+	<!-- <div class="btn-group">
+	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+	     Select a teammate <span class="caret"></span>
+	  </button>
+	    	
+	  <ul class="dropdown-menu" role="menu">
+	  	<li><%= @po_playerdata[0]["TEAM_CITY"] %> <%= @po_playerdata[0]["TEAM_NAME"] %></li>
+	    <% @po_team_rosters_array.each do |hash| %>
+	      <li><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a></li>
+	   	<% end %>  
+	  </ul>
+	</div> -->
+	
+	<table class="table table-bordered">
+		<thead>
+			<th>Teammates</th>
+			
+		</thead>
+		<% @po_team_rosters_array.each do |hash| %>
+		<tbody>
+			<td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a></td>
+			
+		</tbody>
+		<% end %>
+	</table>
+
+	

@@ -19,12 +19,12 @@ class ConffinalsController < ApplicationController
       end
 
       #NBA.com player dashboard totals
-	  @po_player_dashboard_totals = Unirest.get("http://stats.nba.com/stats/playerdashboardbygeneralsplits?DateFrom=&DateTo=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=Totals&Period=0&PlayerID=#{@player.person_id}&PlusMinus=N&Rank=N&Season=2014-15&SeasonSegment=&SeasonType=Playoffs&VsConference=&VsDivision=")
+      @po_player_dashboard_totals = Unirest.get("http://stats.nba.com/stats/playerdashboardbygeneralsplits?DateFrom=&DateTo=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=Totals&Period=0&PlayerID=#{@player.person_id}&PlusMinus=N&Rank=N&Season=2014-15&SeasonSegment=&SeasonType=Playoffs&VsConference=&VsDivision=")
         @rd_player_dashboard_totals = Unirest.get("http://stats.nba.com/stats/playerdashboardbygeneralsplits?DateFrom=04/18/2015&DateTo=05/02/2015&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=Totals&Period=0&PlayerID=#{@player.person_id}&PlusMinus=N&Rank=N&Season=2014-15&SeasonSegment=&SeasonType=Playoffs&VsConference=&VsDivision=")
       	@sf_player_dashboard_totals = Unirest.get("http://stats.nba.com/stats/playerdashboardbygeneralsplits?DateFrom=05/03/2015&DateTo=05/17/2015&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=Totals&Period=0&PlayerID=#{@player.person_id}&PlusMinus=N&Rank=N&Season=2014-15&SeasonSegment=&SeasonType=Playoffs&VsConference=&VsDivision=")
       	@cf_player_dashboard_totals = Unirest.get("http://stats.nba.com/stats/playerdashboardbygeneralsplits?DateFrom=05/19/2015&DateTo=05/27/2015&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=Totals&Period=0&PlayerID=#{@player.person_id}&PlusMinus=N&Rank=N&Season=2014-15&SeasonSegment=&SeasonType=Playoffs&VsConference=&VsDivision=")
       	@f_player_dashboard_totals = Unirest.get("http://stats.nba.com/stats/playerdashboardbygeneralsplits?DateFrom=06/04/2015&DateTo=06/19/2015&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=Totals&Period=0&PlayerID=#{@player.person_id}&PlusMinus=N&Rank=N&Season=2014-15&SeasonSegment=&SeasonType=Playoffs&VsConference=&VsDivision=")
-            
+      
       a = @cf_player_dashboard_totals.body
       b = a["resultSets"]
       c = b[0] #specific array for totals    
@@ -41,7 +41,7 @@ class ConffinalsController < ApplicationController
         @po_PlayerTotalsdata << hash 
       end
 
-      #NBA.com passes made 
+            #NBA.com passes made 
       @po_player_passes = Unirest.get("http://stats.nba.com/stats/playerdashptpass?DateFrom=05/19/2015&DateTo=05/27/2015&GameSegment=&LastNGames=0&LeagueID=00&Location=&Month=0&OpponentTeamID=0&Outcome=&PerMode=Totals&Period=0&PlayerID=#{@player.person_id}&Season=2014-15&SeasonSegment=&SeasonType=Playoffs&TeamID=0&VsConference=&VsDivision=")
       
       a = @po_player_passes.body
@@ -141,19 +141,38 @@ class ConffinalsController < ApplicationController
        d = c["headers"]
        e = c["rowSet"]
 
-       po_team_touches_array = []
+       @po_team_touches_array = []
        e.each do |row|
      	 hash = Hash[*d.zip(row).flatten]
-     	 po_team_touches_array << hash 
+     	 @po_team_touches_array << hash 
        end
 
-       @po_team_touches_total = po_team_touches_array.select {|team| team["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"] }
+       @po_team_touches_total = @po_team_touches_array.select {|team| team["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"] }
 
        #Player Touches
        po_player_touches = Unirest.get("http://stats.nba.com/js/data/sportvu/2014/touchesDataPost.json").body["resultSets"][0]["rowSet"]
 
        @po_player_touches_total = po_player_touches.select{ |player| player[0].to_i == @po_playerdata[0]["PERSON_ID"] }
-     	  
+     	
+     #Team roster - Used teamplayerdashboard instead of commonteamroster to show only players who have played in playoffs
+       po_team_rosters = Unirest.get("http://stats.nba.com/stats/teamplayerdashboard?DateFrom=&DateTo=&GameSegment=&LastNGames=0&LeagueID=00&Location=&MeasureType=Base&Month=0&OpponentTeamID=0&Outcome=&PaceAdjust=N&PerMode=PerGame&Period=0&PlusMinus=N&Rank=N&Season=2014-15&SeasonSegment=&SeasonType=Playoffs&TeamID=#{@po_playerdata[0]["TEAM_ID"]}&VsConference=&VsDivision=")
+       a = po_team_rosters.body
+       b = a["resultSets"]
+       c = b[1]
+       d = c["headers"]
+       e = c["rowSet"]
 
-	end #Show
+       @po_team_rosters_array = []
+       e.each do |row|
+       	hash = Hash[*d.zip(row).flatten]
+       	@po_team_rosters_array << hash 
+       end
+
+       #Teams in playoffs
+       @po_teams = []
+       @po_team_touches_array.each do |team|
+       	@po_teams << team["TEAM_ID"]
+       end
+		p @po_teams  
+	end
 end

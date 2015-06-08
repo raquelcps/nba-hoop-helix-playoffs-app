@@ -1,0 +1,23 @@
+<!-- HEADER and NAV -->	
+<div class="full-header">
+  <div class="page-id-header col-md-8">
+     <p>Hoop Helix</p>
+  </div>
+  <div class="btn-group col-md-4 team-selector">
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+	    Select a team <span class="caret"></span>
+	  </button>
+	    	
+	  <ul class="dropdown-menu" role="menu" onclick="dosomething();">
+	    <% @teams[0..15].sort_by { |hash| hash.team_city}. each do |hash| %>
+	      <li><a href="/teams/<%= hash.team_id %> " ><%= hash.team_city%> <%= hash.team_name %></a></li>
+	   	<% end %>  
+	  </ul>
+  </div>
+  
+  <div class="player-page-name col-md-12">
+    <p>2015 PLAYOFFS</p> 
+  </div>
+
+
+</div>

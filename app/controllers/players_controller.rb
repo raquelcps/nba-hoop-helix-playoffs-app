@@ -146,15 +146,15 @@ class PlayersController < ApplicationController
        d = c["headers"]
        e = c["rowSet"]
 
-       po_team_touches_array = []
+       @po_team_touches_array = []
        e.each do |row|
      	 hash = Hash[*d.zip(row).flatten]
-     	 po_team_touches_array << hash 
+     	 @po_team_touches_array << hash 
        end
 p "team touches"
-p po_team_touches_array[0]
+p @po_team_touches_array[0]
 p e
-       @po_team_touches_total = po_team_touches_array.select {|team| team["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"] }
+       @po_team_touches_total = @po_team_touches_array.select {|team| team["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"] }
 
        #Player Touches
        po_player_touches = Unirest.get("http://stats.nba.com/js/data/sportvu/2014/touchesDataPost.json").body["resultSets"][0]["rowSet"]
@@ -177,10 +177,11 @@ p e
 
        #Teams in playoffs
        @po_teams = []
-       po_team_touches_array.each do |team|
+       @po_team_touches_array.each do |team|
        	@po_teams << team["TEAM_ID"]
        end
 		p @po_teams
+    
 	end #Show
 
 
