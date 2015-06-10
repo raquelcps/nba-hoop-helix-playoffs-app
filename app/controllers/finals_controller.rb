@@ -175,7 +175,37 @@ class FinalsController < ApplicationController
        end
 		
 
-       
+#Touches by playoff round using game logs
+#Finals Gm 3
+po_boxscores = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400403&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
+a = po_boxscores.body
+b = a["resultSets"]
+c = b[0] #playertrack
+d = c["headers"]
+e = c["rowSet"]
+
+@po_boxscores_array = []
+e.each do |row|
+  hash = Hash[*d.zip(row).flatten]
+  @po_boxscores_array << hash 
+end
+
+p "box scores"
+p @po_boxscores_array
+
+tb = a["resultSets"]
+tc = tb[1] #teamtrack
+td = tc["headers"]
+te = tc["rowSet"]
+
+@po_team_boxscores_array = []
+te.each do |row|
+  hash = Hash[*td.zip(row).flatten]
+  @po_team_boxscores_array << hash 
+end
+
+p "team box scores"
+p @po_team_boxscores_array
 	
   end
 end
