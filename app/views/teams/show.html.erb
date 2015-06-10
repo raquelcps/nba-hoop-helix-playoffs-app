@@ -1,23 +1,21 @@
 <%= render 'shared/team_header' %>
 <!-- Main Pane -->
 <div class="main">
-<div class="page-sub-nav col-md-12">	 
-  	<h4><%= @team.team_city %> <%= @team.team_name %><h4> 	 	
+	<div class="page-sub-nav col-md-12">	 
+	  	<h4><%= @team.team_city %> <%= @team.team_name %></h4> 	 	
+	</div>
+
+	<div class="row team-players-all">
+	  <% @po_team_rosters_array.each do |hash| %>
+		  <div class="col-md-4">
+		  	<div class="single-pic" onclick="dosomething();">
+		  	  <a href="/players/<%= hash['PLAYER_ID'] %>" class="thumbnail">
+		  	  	<img src="http://stats.nba.com/media/players/230x185/<%= hash['PLAYER_ID'] %>.png" width="150px">
+			  <button type="button" class="btn"><%= hash["PLAYER_NAME"] %> <i class="fa fa-user"></i></button></a>
+			</div>
+			
+	  	  </div>
+  	  <% end %> 
+	</div>
 </div>
-
-<div class="row team-players-all">
-  <% @po_team_rosters_array.each do |hash| %>
-	  <div class="col-md-4">
-	  	<div class="single-pic">
-	  	  <a href="/players/<%= hash['PLAYER_ID'] %>" class="thumbnail" onclick="dosomething();">
-	  	  	<img src="http://stats.nba.com/media/players/230x185/<%= hash['PLAYER_ID'] %>.png" width="150px">
-		  <button type="button" class="btn"><%= hash["PLAYER_NAME"] %></button></a>
-		</div>
-		
-	  </div>
-  <% end %> 
-</div>
-
-
-
 <!-- END Main -->

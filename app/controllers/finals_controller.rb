@@ -173,6 +173,9 @@ class FinalsController < ApplicationController
        @po_team_touches_array.each do |team|
        	@po_teams << team["TEAM_ID"]
        end
-		p @po_teams  
-	end
+		
+
+       
+	
+  end
 end

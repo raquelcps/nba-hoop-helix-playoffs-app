@@ -1,22 +1,41 @@
 <!-- HEADER and NAV -->	
 <div class="full-header">
-  <div class="page-id-header col-md-8">
-     <p>Hoop Helix</p>
-  </div>
-  <div class="btn-group col-md-4 team-selector">
-		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-	    Select a team <span class="caret"></span>
-	  </button>
-	    	
-	  <ul class="dropdown-menu" role="menu" onclick="dosomething();">
-	    <% @po_team_touches_array.sort_by { |hash| hash["TEAM_CITY"]}. each do |hash| %>
-	      <li><a href="/teams/<%= hash["TEAM_ID"] %> "><%= hash["TEAM_CITY"] %> <%= hash["TEAM_NAME"] %></a></li>
-	   	<% end %>  
-	  </ul>
-  </div>
-  <div class="player-page-name col-md-12">
-    <p>2015 PLAYOFFS: <strong><%= @po_playerdata[0]["DISPLAY_FIRST_LAST"] %></strong></p>
-  </div>
+	<nav class="navbar navbar-default page-id-header">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand navbar-brand-custom" href="/teams/1610612739"><h1>hoop helix</h1></a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">           
+	      <ul class="nav navbar-nav navbar-right navbar-right-custom">        
+	        <li class="dropdown">
+	          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-users"></i> Select a team <span class="caret"></span>
+		      </button>
+			    <ul class="dropdown-menu" role="menu" onclick="dosomething();">
+			      <% @po_team_touches_array.sort_by { |hash| hash["TEAM_CITY"]}. each do |hash| %>
+	      		    <li><a href="/teams/<%= hash["TEAM_ID"] %> "><%= hash["TEAM_CITY"] %> <%= hash["TEAM_NAME"] %></a></li>
+	   				<% end %>  
+		 	    </ul>
+	        </li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+    <div class="player-page-name col-md-12">
+      <h4>2015 PLAYOFFS</h4>
+    </div>
+    <div class="page-sub-nav col-md-12">
+      <!-- <i class="fa fa-user"></i> -->
+      <h4><%= @po_playerdata[0]["DISPLAY_FIRST_LAST"] %></h4>
+    </div>
     <!-- Player Info -->
     <div class="row player-well">
     <div class="col-md-4 player-page-profile">
@@ -26,34 +45,34 @@
     </div> 
 	
     <div class="col-md-4 player-page-info">
-      <p><%= (@po_PlayerTotalsdata[0]["PTS"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> PTS / <%= (@po_PlayerTotalsdata[0]["REB"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> REB / <%= (@po_PlayerTotalsdata[0]["AST"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> AST</p>
+      <h5><%= (@po_PlayerTotalsdata[0]["PTS"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> PTS / <%= (@po_PlayerTotalsdata[0]["REB"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> REB / <%= (@po_PlayerTotalsdata[0]["AST"]/ @po_PlayerTotalsdata[0]["GP"].to_f).round(1) %> AST</h5>
       <img src="http://stats.nba.com/media/img/teams/logos/<%= @po_playerdata[0]["TEAM_ABBREVIATION"] %>_logo.svg" width="90" style="float:left; margin-right:10px;">
-      <h5><%= @po_playerdata[0]["TEAM_CITY"] %> <%= @po_playerdata[0]["TEAM_NAME"] %>
-      </h5>
-      <h5>Pos: <%= @po_playerdata[0]["POSITION"] %> | Exp: <%= @po_playerdata[0]["SEASON_EXP"] %> yrs</h5>
+      <p><%= @po_playerdata[0]["TEAM_CITY"] %> <%= @po_playerdata[0]["TEAM_NAME"] %>
+      </p>
+      <p>Pos: <%= @po_playerdata[0]["POSITION"] %> | Exp: <%= @po_playerdata[0]["SEASON_EXP"] %> yrs</p>
       
-      <h5>Record: <%= @po_playerteamdata[0]["W"] %>W - <%= @po_playerteamdata[0]["L"] %>L</h5>
-      <h5>Games Played: <%= @po_PlayerTotalsdata[0]["GP"] %></h5>
+      <p>Record: <%= @po_playerteamdata[0]["W"] %>W - <%= @po_playerteamdata[0]["L"] %>L</p>
+      <p>Games Played: <%= @po_PlayerTotalsdata[0]["GP"] %></p>
   	
     </div>
     <div class="col-md-3 player-page-buttons"> 
     <ul class="nav nav-pills nav-stacked" onclick="dosomething();">
-  	  <li class="<%= 'active' if current_page?(controller: 'players', action: 'show') %>" role="presentation" id="all"><a href="/players/<%= @po_playerdata[0]["PERSON_ID"] %>">All</a></li>	
+  	  <li class="<%= 'active' if current_page?(controller: 'players', action: 'show') %>" role="presentation" id="all"><a href="/players/<%= @po_playerdata[0]["PERSON_ID"] %>"><i class="fa fa-bar-chart"></i>All Rounds </a></li>	
       <% if @rd_player_dashboard_totals.body["resultSets"][0]["rowSet"] != [] %>
-	      <li class="<%= 'active' if current_page?(controller: 'rounds', action: 'show') %>" role="presentation" id="round1"><a href="/players/round1/<%= @po_playerdata[0]["PERSON_ID"] %>">Round 1</a></li>
+	      <li class="<%= 'active' if current_page?(controller: 'rounds', action: 'show') %>" role="presentation" id="round1"><a href="/players/round1/<%= @po_playerdata[0]["PERSON_ID"] %>"><i class="fa fa-bar-chart"></i>Round 1</a></li>
       <% end %>
       <% if @sf_player_dashboard_totals.body["resultSets"][0]["rowSet"] != [] %>
-	      <li class="<%= 'active' if current_page?(controller: 'semifinals', action: 'show') %>" role="presentation" id="semis"><a href="/players/semis/<%= @po_playerdata[0]["PERSON_ID"] %>">Semifinals</a></li>
+	      <li class="<%= 'active' if current_page?(controller: 'semifinals', action: 'show') %>" role="presentation" id="semis"><a href="/players/semis/<%= @po_playerdata[0]["PERSON_ID"] %>"><i class="fa fa-bar-chart"></i>Semifinals</a></li>
       <% end %>
       <% if @cf_player_dashboard_totals.body["resultSets"][0]["rowSet"] != [] %>
-	      <li class="<%= 'active' if current_page?(controller: 'conffinals', action: 'show') %>" role="presentation" id="conffinals"><a href="/players/conf_finals/<%= @po_playerdata[0]["PERSON_ID"] %>">Conference Finals</a></li>
+	      <li class="<%= 'active' if current_page?(controller: 'conffinals', action: 'show') %>" role="presentation" id="conffinals"><a href="/players/conf_finals/<%= @po_playerdata[0]["PERSON_ID"] %>"><i class="fa fa-bar-chart"></i>Conference Finals</a></li>
       <% end %> 
       <% if @f_player_dashboard_totals.body["resultSets"][0]["rowSet"] != [] %>
-	      <li class="<%= 'active' if current_page?(controller: 'finals', action: 'show') %>" role="presentation" id="finals"><a href="/players/finals/<%= @po_playerdata[0]["PERSON_ID"] %>">Finals</a></li>
+	      <li class="<%= 'active' if current_page?(controller: 'finals', action: 'show') %>" role="presentation" id="finals"><a href="/players/finals/<%= @po_playerdata[0]["PERSON_ID"] %>"><i class="fa fa-bar-chart"></i>Finals</a></li>
 	  <% end %>
     </ul>  	
     </div>
 
-	</div> <!--end row-->
+	</div> <!--end row player-well-->
     <!-- End Player Info -->
 </div>
