@@ -1,7 +1,69 @@
 <%= render 'shared/team_header' %>
-
+<!-- Main Pane -->
+<div class="main">
+<div class="page-sub-nav col-md-12">	 
+	<h4>Team Index</h4> 	 	
+</div>	
+<div class="col-md-12 alert alert-info alert-dismissible alert-custom" role="alert">
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	Welcome to Hoop Helix. The focus right now is on the 2015 playoffs, but I have more features and improvements planned during the off-season. Thanks for visiting. 
+</div>
+<div class="col-md-12 team-list">	
 <% @teams[0..15].each do |team| %>
-	<p><%= team.team_id %><p>
-
-<% end %>
+  <div class="col-md-3 team-unit">
+	  	<a href="teams/<%= team.team_id %>" onclick="dosomething();">
+	  <% if team.team_id == 1610612737 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/atl_logo.svg">
+   	  <% end %>
+   	  <% if team.team_id == 1610612738 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/bos_logo.svg">
+   	  <% end %>
+   	  <% if team.team_id == 1610612751 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/bkn_logo.svg">
+   	  <% end %>
+   	  <% if team.team_id == 1610612741 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/chi_logo.svg">
+   	  <% end %>
+   	  <% if team.team_id == 1610612739 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/cle_logo.svg">
+   	  <% end %>
+   	  <% if team.team_id == 1610612742 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/dal_logo.svg">
+   	  <% end %>
+   	  <% if team.team_id == 1610612744 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/gsw_logo.svg">
+   	  <% end %>
+   	  <% if team.team_id == 1610612745 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/hou_logo.svg">
+   	  <% end %>
+   	  <% if team.team_id == 1610612746 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/lac_logo.svg">
+   	  <% end %>
+   	  <% if team.team_id == 1610612763 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/mem_logo.svg">
+   	  <% end %>
+   	  <% if team.team_id == 1610612749 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/mil_logo.svg">
+   	  <% end %>
+   	  <% if team.team_id == 1610612740 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/nop_logo.svg">
+   	  <% end %>
+   	  <% if team.team_id == 1610612757 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/por_logo.svg">
+   	  <% end %>
+   	  <% if team.team_id == 1610612759 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/sas_logo.svg">
+   	  <% end %>
+   	  <% if team.team_id == 1610612761 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/tor_logo.svg">
+   	  <% end %>
+   	  <% if team.team_id == 1610612764 %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/was_logo.svg">
+   	  <% end %>
+   	</a>
+   	<!-- <p><%= team.team_id %></p> -->
+   	</div>
+  <% end %>
+</div>
+</div>
 

@@ -4,11 +4,11 @@
 	<div class="page-sub-nav col-md-12">	 
 	  	<h4><%= @team.team_city %> <%= @team.team_name %></h4> 	 	
 	</div>
+	<div class="col-md-12 alert alert-info alert-dismissible alert-custom" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		Select a player below to see 2015 playoff production
+	</div>
 	<div class="row team-players-all">
-<div class="col-md-12 alert alert-warning alert-dismissible" role="alert">
-	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	Select a player below to see 2015 playoff production
-</div>
 	  <% @po_team_rosters_array.each do |hash| %>
 		  <div class="col-md-4">
 		  	<div class="single-pic" onclick="dosomething();">

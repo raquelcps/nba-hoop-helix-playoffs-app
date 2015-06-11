@@ -2,6 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.team-list {
+	margin-top: 35px;
+}
+
+.team-list img {
+	width: 150px;
+}
+
+.team-unit {
+	margin-bottom: 65px;
+	text-align: center;
+}
+
+.team-unit p {
+	float:left;
+}
+
 .team-players-all {
 	padding: 10px 20px;
 }
