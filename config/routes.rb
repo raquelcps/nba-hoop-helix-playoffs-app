@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'teams#show', :team_id => '1610612739'
+  root to: 'teams#show', :team_id => 1610612739
   # get '/players' => 'players#index'
   get '/players/:person_id' => 'players#show'
   get '/players/round1/:person_id' => 'rounds#show'
