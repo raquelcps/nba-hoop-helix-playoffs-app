@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 #Added by Author
 gem 'unirest'
 gem 'bootstrap-sass', '~>3.3.3'
+gem 'pg', group: :production
+gem 'rails_12factor', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'

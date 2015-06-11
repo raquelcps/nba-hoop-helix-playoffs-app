@@ -48,7 +48,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: nba-hoop-helix-playoffs-app_production
-  username: nba-hoop-helix-playoffs-app
-  password: <%= ENV['NBA-HOOP-HELIX-PLAYOFFS-APP_DATABASE_PASSWORD'] %>
+  database: nba-hoop-helix-playoffs-app-production
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
