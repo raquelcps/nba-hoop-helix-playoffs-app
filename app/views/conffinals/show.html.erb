@@ -22,7 +22,7 @@
 	<% end %>
 
 	</div>
-	<div class="col-md-8">
+	<div class="col-md-8 stat-main">
 	  <!-- MINUTES -->
 	  <div class="row">
     	<div class="col-md-5 stat-name">
@@ -50,10 +50,7 @@
 		      <p><%= @po_playerteamdata[0]["MIN"].round * 5 %> Minutes *</p>
 		    </div>
 		  </div>
-	    </div><!-- END overview-bars -->
-    	<!-- <div class="col-md-3 stat-logo">
-    		<img src="http://stats.nba.com/media/img/teams/logos/<%= @po_playerdata[0]["TEAM_ABBREVIATION"] %>_logo.svg" width="90">
-    	</div> -->
+	    </div><!-- END overview-bars -->  	
 	  </div><!-- END MINUTES -->
 
 	   <!-- TOUCHES -->
@@ -62,22 +59,10 @@
 	        <h3>Touches</h3>
     	</div>
 	  	<div class="col-md-6 overview-bars">
-	      <div class="progress">
-	          <div class="progress-bar" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: <%= @po_player_touches_total[0][15].to_f / @po_team_touches_total[0]["TCH_TOT"].to_f * 100 %>%;">      
-                    <%= (@po_player_touches_total[0][15].to_f / @po_team_touches_total[0]["TCH_TOT"].to_f * 100).to_i %>%
-              </div>
-          </div>
-          <div class="row">
-		    <div class="col-xs-6 player-data">
-		      <p><%= @po_player_touches_total[0][15] %> Touches</p>
-		    </div>
-		    <div class="col-xs-6 team-data" style="text-align:right">
-		      <p><%= @po_team_touches_total[0]["TCH_TOT"] %> Touches</p>
-		    </div>
-		  </div>
+<%= render 'finals/touchespartial' %> 
+          
 	    </div><!-- END overview-bars -->   	
 	  </div><!-- END TOUCHES -->
-
 	  <!-- AST -->
 	  <div class="row">
     	<div class="col-md-5 stat-name-orange">
@@ -244,6 +229,7 @@
 	  <div class="row">
     	<div class="col-md-5 stat-name-green">
 	        <h3>FGM</h3>
+	        <p>shooting <%= (@po_PlayerTotalsdata[0]["FG_PCT"] * 100).round(1) %>%</p>
     	</div>
 	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
@@ -288,6 +274,7 @@
 	  <div class="row">
     	<div class="col-md-5 stat-name-green">
 	        <h3>FG3M</h3>
+	        <p>shooting <%= (@po_PlayerTotalsdata[0]["FG3_PCT"] * 100).round(1) %>%</p>
     	</div>
 	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
@@ -332,6 +319,7 @@
 	  <div class="row">
     	<div class="col-md-5 stat-name-green">
 	        <h3>FTM</h3>
+	        <p>shooting <%= (@po_PlayerTotalsdata[0]["FT_PCT"] * 100).round(1) %>%</p>
     	</div>
 	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">

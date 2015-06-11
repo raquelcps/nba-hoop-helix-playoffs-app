@@ -1,46 +1,31 @@
-
-
-	<!-- Single button -->
-	<!-- <div class="btn-group">
-	  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-	     Select a teammate <span class="caret"></span>
-	  </button>
-	    	
-	  <ul class="dropdown-menu" role="menu">
-	  	<li><%= @po_playerdata[0]["TEAM_CITY"] %> <%= @po_playerdata[0]["TEAM_NAME"] %></li>
-	    <% @po_team_rosters_array.each do |hash| %>
-	      <li><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a></li>
-	   	<% end %>  
-	  </ul>
-	</div> -->
+<!-- Partial for sidebar of /player pages-->
 	
-	<table class="table table-bordered table-hover">
-		<thead>
-			<th>Teammates <i class="fa fa-cogs"></i></th>
-			
-		</thead>
-		<% @po_team_rosters_array.each do |hash| %>
-		<tbody>
-			<td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a></td>
-			
-		</tbody>
-		<% end %>
-	</table>
+<table class="table table-bordered table-hover">
+	<thead>
+		<th>Teammates <i class="fa fa-cogs"></i></th>
+		
+	</thead>
+	<% @po_team_rosters_array.each do |hash| %>
+	<tbody>
+		<td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a></td>
+		
+	</tbody>
+	<% end %>
+</table>
 
-     <p style="font-size: 12px;">Only players who have played in the 2015 postseason are listed for their team<p>
-     <hr>
-	  
-	 <!-- Collapse button -->
-     <p style="font-size: 12px;"><a data-toggle="collapse" href="#collapseMINEXPL" aria-expanded="true" aria-controls="collapseMINEXPL" title="Expand for an explanation of how minutes are calculated">
-	       *A note on Minutes <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  
-	      </a><p>
-     <!-- End collapse button -->
-     <!-- Start collapse -->
-  	 <div class="collapse" id="collapseMINEXPL">
-	  	<div class="well well-sm">
-	  		<p style="font-size: 12px;">Minutes are calculated by multiplying:<br/> games played X minutes in a game (regulation or OT) X number of players a team can play at once (5). A player's total minutes are divided by the team's total minutes to get the percentage of how much time that player has been on the court. A single player can take up to 20% of their team's minutes.</p>
-	  	</div>
-	 </div>
-	  <!-- End collapse -->
+<p style="font-size: 12px;">Only players who have played in the 2015 postseason are listed for their team<p>
+<hr>
+
+<!-- Collapse button -->
+<p style="font-size: 12px;"><a data-toggle="collapse" href="#collapseMINEXPL" aria-expanded="true" aria-controls="collapseMINEXPL" title="Expand for an explanation of how minutes are calculated">
+   *A note on Minutes </a><p>
+<!-- End collapse button -->
+<!-- Start collapse -->
+ <div class="collapse" id="collapseMINEXPL">
+	<div class="well well-sm">
+		<p style="font-size: 12px;">Minutes are calculated by multiplying:<br/> games played X minutes in a game (regulation or OT) X number of players a team can play at once (5). A player's total minutes are divided by the team's total minutes to get the percentage of how much time that player has been on the court. A single player can take up to 20% of their team's minutes.</p>
+	</div>
+</div>
+<!-- End collapse -->
 
 	

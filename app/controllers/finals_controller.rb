@@ -136,7 +136,6 @@ class FinalsController < ApplicationController
        po_team_touches = Unirest.get("http://stats.nba.com/js/data/sportvu/2014/touchesTeamDataPost.json")
        a = po_team_touches.body
        b = a["resultSets"]
-       p "TEAM RESULT SETS"
        c = b[0]
        d = c["headers"]
        e = c["rowSet"]
@@ -177,35 +176,91 @@ class FinalsController < ApplicationController
 
 #Touches by playoff round using game logs
 #Finals Gm 3
-po_boxscores = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400403&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
-a = po_boxscores.body
+f_gm3_boxscore = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400403&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
+a = f_gm3_boxscore.body
 b = a["resultSets"]
 c = b[0] #playertrack
 d = c["headers"]
 e = c["rowSet"]
 
-@po_boxscores_array = []
+@f_gm3_boxscore_array = []
 e.each do |row|
   hash = Hash[*d.zip(row).flatten]
-  @po_boxscores_array << hash 
+  @f_gm3_boxscore_array << hash 
 end
 
-p "box scores"
-p @po_boxscores_array
+@f_gm3_player_touches = @f_gm3_boxscore_array.select { |player| player["PLAYER_ID"].to_i == @po_playerdata[0]["PERSON_ID"]}
 
-tb = a["resultSets"]
-tc = tb[1] #teamtrack
-td = tc["headers"]
-te = tc["rowSet"]
+@f_gm3_team_touches = @f_gm3_boxscore_array.select { |player| player["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"]}
 
-@po_team_boxscores_array = []
-te.each do |row|
-  hash = Hash[*td.zip(row).flatten]
-  @po_team_boxscores_array << hash 
+@f_gm3_team_touches_array = []
+@f_gm3_team_touches.each do |hash|
+  @f_gm3_team_touches_array << hash["TCHS"]
 end
 
-p "team box scores"
-p @po_team_boxscores_array
+
+
+
+#Finals game 2
+f_gm2_boxscore = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400402&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
+a = f_gm2_boxscore.body
+b = a["resultSets"]
+c = b[0] #playertrack
+d = c["headers"]
+e = c["rowSet"]
+
+@f_gm2_boxscore_array = []
+e.each do |row|
+  hash = Hash[*d.zip(row).flatten]
+  @f_gm2_boxscore_array << hash 
+end
+
+@f_gm2_player_touches = @f_gm2_boxscore_array.select { |player| player["PLAYER_ID"].to_i == @po_playerdata[0]["PERSON_ID"]}
+
+@f_gm2_team_touches = @f_gm2_boxscore_array.select { |player| player["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"]}
+
+
+#Finals game 1
+f_gm1_boxscore = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400401&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
+a = f_gm1_boxscore.body
+b = a["resultSets"]
+c = b[0] #playertrack
+d = c["headers"]
+e = c["rowSet"]
+
+@f_gm1_boxscore_array = []
+e.each do |row|
+  hash = Hash[*d.zip(row).flatten]
+  @f_gm1_boxscore_array << hash 
+end
+
+@f_gm1_player_touches = @f_gm1_boxscore_array.select { |player| player["PLAYER_ID"].to_i == @po_playerdata[0]["PERSON_ID"]}
+
+@f_gm1_team_touches = @f_gm1_boxscore_array.select { |player| player["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"]}
+
+#Finals player total touches
+@finals_player_touches_array = []
+@f_gm3_player_touches.each do |gm3|
+  @finals_player_touches_array << gm3["TCHS"]
+end
+@f_gm2_player_touches.each do |gm2|
+  @finals_player_touches_array << gm2["TCHS"]
+end
+@f_gm1_player_touches.each do |gm1|
+  @finals_player_touches_array << gm1["TCHS"]
+end
+
+#Finals team total touches
+@finals_team_touches_array = []
+@f_gm3_team_touches.each do |gm3|
+  @finals_team_touches_array << gm3["TCHS"]
+end
+@f_gm2_team_touches.each do |gm2|
+  @finals_team_touches_array << gm2["TCHS"]
+end
+@f_gm1_team_touches.each do |gm1|
+  @finals_team_touches_array << gm1["TCHS"]
+end
 	
   end
 end

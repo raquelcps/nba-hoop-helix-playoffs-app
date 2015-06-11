@@ -1,6 +1,7 @@
 class PlayersController < ApplicationController
 
 	def index
+    
 	end
 
 	def show
@@ -181,7 +182,7 @@ p e
        	@po_teams << team["TEAM_ID"]
        end
 		p @po_teams
-    
+
 	end #Show
 
 

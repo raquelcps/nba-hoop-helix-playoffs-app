@@ -136,7 +136,6 @@ class ConffinalsController < ApplicationController
        po_team_touches = Unirest.get("http://stats.nba.com/js/data/sportvu/2014/touchesTeamDataPost.json")
        a = po_team_touches.body
        b = a["resultSets"]
-       p "TEAM RESULT SETS"
        c = b[0]
        d = c["headers"]
        e = c["rowSet"]
@@ -173,6 +172,6 @@ class ConffinalsController < ApplicationController
        @po_team_touches_array.each do |team|
        	@po_teams << team["TEAM_ID"]
        end
-		p @po_teams  
+ 
 	end
 end

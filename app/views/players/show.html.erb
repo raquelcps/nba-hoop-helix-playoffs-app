@@ -4,7 +4,7 @@
 	<div class="page-sub-nav">
 	  <h4>Team Contribution: All Rounds<h4>  	
 	</div>
-	<div class="col-md-8">
+	<div class="col-md-8 stat-main">
 	  <!-- MINUTES -->
 	  <div class="row">
     	<div class="col-md-5 stat-name">
@@ -223,6 +223,7 @@
 	  <div class="row">
     	<div class="col-md-5 stat-name-green">
 	        <h3>FGM</h3>
+	        <p>shooting <%= (@po_PlayerTotalsdata[0]["FG_PCT"] * 100).round(1) %>%</p>
     	</div>
 	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
@@ -267,6 +268,7 @@
 	  <div class="row">
     	<div class="col-md-5 stat-name-green">
 	        <h3>FG3M</h3>
+	        <p>shooting <%= (@po_PlayerTotalsdata[0]["FG3_PCT"] * 100).round(1) %>%</p>
     	</div>
 	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
@@ -311,6 +313,7 @@
 	  <div class="row">
     	<div class="col-md-5 stat-name-green">
 	        <h3>FTM</h3>
+	        <p>shooting <%= (@po_PlayerTotalsdata[0]["FT_PCT"] * 100).round(1) %>%</p>
     	</div>
 	  	<div class="col-md-6 overview-bars">	  
 	      <div class="progress">
