@@ -175,6 +175,25 @@ class FinalsController < ApplicationController
 		
 
 #Touches by playoff round using game logs
+
+#Finals Gm 5
+f_gm5_boxscore = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400405&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
+a = f_gm5_boxscore.body
+b = a["resultSets"]
+c = b[0] #playertrack
+d = c["headers"]
+e = c["rowSet"]
+
+@f_gm5_boxscore_array = []
+e.each do |row|
+  hash = Hash[*d.zip(row).flatten]
+  @f_gm5_boxscore_array << hash 
+end
+
+@f_gm5_player_touches = @f_gm5_boxscore_array.select { |player| player["PLAYER_ID"].to_i == @po_playerdata[0]["PERSON_ID"]}
+
+@f_gm5_team_touches = @f_gm5_boxscore_array.select { |player| player["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"]}
+
 #Finals Gm 4
 f_gm4_boxscore = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400404&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
 a = f_gm4_boxscore.body
@@ -258,6 +277,9 @@ end
 
 #Finals player total touches
 @finals_player_touches_array = []
+@f_gm5_player_touches.each do |gm5|
+  @finals_player_touches_array << gm5["TCHS"]
+end
 @f_gm4_player_touches.each do |gm4|
   @finals_player_touches_array << gm4["TCHS"]
 end
@@ -273,6 +295,9 @@ end
 
 #Finals team total touches
 @finals_team_touches_array = []
+@f_gm5_team_touches.each do |gm5|
+  @finals_team_touches_array << gm5["TCHS"]
+end
 @f_gm4_team_touches.each do |gm4|
   @finals_team_touches_array << gm4["TCHS"]
 end
