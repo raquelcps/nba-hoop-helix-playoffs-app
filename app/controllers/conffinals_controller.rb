@@ -172,6 +172,240 @@ class ConffinalsController < ApplicationController
        @po_team_touches_array.each do |team|
        	@po_teams << team["TEAM_ID"]
        end
+
+#Touches in conference finals using game logs
+#Eastern Conference Gm 4
+ec_gm4_boxscore = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400304&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
+a = ec_gm4_boxscore.body
+b = a["resultSets"]
+c = b[0] #playertrack
+d = c["headers"]
+e = c["rowSet"]
+
+@ec_gm4_boxscore_array = []
+e.each do |row|
+  hash = Hash[*d.zip(row).flatten]
+  @ec_gm4_boxscore_array << hash 
+end
+
+@ec_gm4_player_touches = @ec_gm4_boxscore_array.select { |player| player["PLAYER_ID"].to_i == @po_playerdata[0]["PERSON_ID"]}
+
+@ec_gm4_team_touches = @ec_gm4_boxscore_array.select { |player| player["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"]}
+
+#Eastern Conference Gm 3
+ec_gm3_boxscore = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400303&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
+a = ec_gm3_boxscore.body
+b = a["resultSets"]
+c = b[0] #playertrack
+d = c["headers"]
+e = c["rowSet"]
+
+@ec_gm3_boxscore_array = []
+e.each do |row|
+  hash = Hash[*d.zip(row).flatten]
+  @ec_gm3_boxscore_array << hash 
+end
+
+@ec_gm3_player_touches = @ec_gm3_boxscore_array.select { |player| player["PLAYER_ID"].to_i == @po_playerdata[0]["PERSON_ID"]}
+
+@ec_gm3_team_touches = @ec_gm3_boxscore_array.select { |player| player["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"]}
+
+
+#Eastern Conference Gm 2
+ec_gm2_boxscore = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400302&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
+a = ec_gm2_boxscore.body
+b = a["resultSets"]
+c = b[0] #playertrack
+d = c["headers"]
+e = c["rowSet"]
+
+@ec_gm2_boxscore_array = []
+e.each do |row|
+  hash = Hash[*d.zip(row).flatten]
+  @ec_gm2_boxscore_array << hash 
+end
+
+@ec_gm2_player_touches = @ec_gm2_boxscore_array.select { |player| player["PLAYER_ID"].to_i == @po_playerdata[0]["PERSON_ID"]}
+
+@ec_gm2_team_touches = @ec_gm2_boxscore_array.select { |player| player["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"]}
+
+
+#Eastern Conference Gm 1
+ec_gm1_boxscore = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400301&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
+a = ec_gm1_boxscore.body
+b = a["resultSets"]
+c = b[0] #playertrack
+d = c["headers"]
+e = c["rowSet"]
+
+@ec_gm1_boxscore_array = []
+e.each do |row|
+  hash = Hash[*d.zip(row).flatten]
+  @ec_gm1_boxscore_array << hash 
+end
+
+@ec_gm1_player_touches = @ec_gm1_boxscore_array.select { |player| player["PLAYER_ID"].to_i == @po_playerdata[0]["PERSON_ID"]}
+
+@ec_gm1_team_touches = @ec_gm1_boxscore_array.select { |player| player["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"]}
+
+#Eastern Conference player total touches
+@ec_player_touches_array = []
+@ec_gm4_player_touches.each do |gm4|
+  @ec_player_touches_array << gm4["TCHS"]
+end
+@ec_gm3_player_touches.each do |gm3|
+  @ec_player_touches_array << gm3["TCHS"]
+end
+@ec_gm2_player_touches.each do |gm2|
+  @ec_player_touches_array << gm2["TCHS"]
+end
+@ec_gm1_player_touches.each do |gm1|
+  @ec_player_touches_array << gm1["TCHS"]
+end
+
+#Eastern Conference team total touches
+@ec_team_touches_array = []
+@ec_gm4_team_touches.each do |gm4|
+  @ec_team_touches_array << gm4["TCHS"]
+end
+@ec_gm3_team_touches.each do |gm3|
+  @ec_team_touches_array << gm3["TCHS"]
+end
+@ec_gm2_team_touches.each do |gm2|
+  @ec_team_touches_array << gm2["TCHS"]
+end
+@ec_gm1_team_touches.each do |gm1|
+  @ec_team_touches_array << gm1["TCHS"]
+end
  
+#Western Conference Gm 5
+wc_gm5_boxscore = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400315&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
+a = wc_gm5_boxscore.body
+b = a["resultSets"]
+c = b[0] #playertrack
+d = c["headers"]
+e = c["rowSet"]
+
+@wc_gm5_boxscore_array = []
+e.each do |row|
+  hash = Hash[*d.zip(row).flatten]
+  @wc_gm5_boxscore_array << hash 
+end
+
+@wc_gm5_player_touches = @wc_gm5_boxscore_array.select { |player| player["PLAYER_ID"].to_i == @po_playerdata[0]["PERSON_ID"]}
+
+@wc_gm5_team_touches = @wc_gm5_boxscore_array.select { |player| player["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"]}
+
+
+#Western Conference Gm 4
+wc_gm4_boxscore = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400314&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
+a = wc_gm4_boxscore.body
+b = a["resultSets"]
+c = b[0] #playertrack
+d = c["headers"]
+e = c["rowSet"]
+
+@wc_gm4_boxscore_array = []
+e.each do |row|
+  hash = Hash[*d.zip(row).flatten]
+  @wc_gm4_boxscore_array << hash 
+end
+
+@wc_gm4_player_touches = @wc_gm4_boxscore_array.select { |player| player["PLAYER_ID"].to_i == @po_playerdata[0]["PERSON_ID"]}
+
+@wc_gm4_team_touches = @wc_gm4_boxscore_array.select { |player| player["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"]}
+
+#Western Conference Gm 3
+wc_gm3_boxscore = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400313&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
+a = wc_gm3_boxscore.body
+b = a["resultSets"]
+c = b[0] #playertrack
+d = c["headers"]
+e = c["rowSet"]
+
+@wc_gm3_boxscore_array = []
+e.each do |row|
+  hash = Hash[*d.zip(row).flatten]
+  @wc_gm3_boxscore_array << hash 
+end
+
+@wc_gm3_player_touches = @wc_gm3_boxscore_array.select { |player| player["PLAYER_ID"].to_i == @po_playerdata[0]["PERSON_ID"]}
+
+@wc_gm3_team_touches = @wc_gm3_boxscore_array.select { |player| player["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"]}
+
+
+#Western Conference Gm 2
+wc_gm2_boxscore = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400312&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
+a = wc_gm2_boxscore.body
+b = a["resultSets"]
+c = b[0] #playertrack
+d = c["headers"]
+e = c["rowSet"]
+
+@wc_gm2_boxscore_array = []
+e.each do |row|
+  hash = Hash[*d.zip(row).flatten]
+  @wc_gm2_boxscore_array << hash 
+end
+
+@wc_gm2_player_touches = @wc_gm2_boxscore_array.select { |player| player["PLAYER_ID"].to_i == @po_playerdata[0]["PERSON_ID"]}
+
+@wc_gm2_team_touches = @wc_gm2_boxscore_array.select { |player| player["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"]}
+
+
+#Western Conference Gm 1
+wc_gm1_boxscore = Unirest.get("http://stats.nba.com/stats/boxscoreplayertrackv2?EndPeriod=10&EndRange=55800&GameID=0041400311&RangeType=2&Season=2014-15&SeasonType=Playoffs&StartPeriod=1&StartRange=0")
+a = wc_gm1_boxscore.body
+b = a["resultSets"]
+c = b[0] #playertrack
+d = c["headers"]
+e = c["rowSet"]
+
+@wc_gm1_boxscore_array = []
+e.each do |row|
+  hash = Hash[*d.zip(row).flatten]
+  @wc_gm1_boxscore_array << hash 
+end
+
+@wc_gm1_player_touches = @wc_gm1_boxscore_array.select { |player| player["PLAYER_ID"].to_i == @po_playerdata[0]["PERSON_ID"]}
+
+@wc_gm1_team_touches = @wc_gm1_boxscore_array.select { |player| player["TEAM_ID"].to_i == @po_playerdata[0]["TEAM_ID"]}
+
+#Western Conference player total touches
+@wc_player_touches_array = []
+@wc_gm5_player_touches.each do |gm5|
+  @wc_player_touches_array << gm5["TCHS"]
+end
+@wc_gm4_player_touches.each do |gm4|
+  @wc_player_touches_array << gm4["TCHS"]
+end
+@wc_gm3_player_touches.each do |gm3|
+  @wc_player_touches_array << gm3["TCHS"]
+end
+@wc_gm2_player_touches.each do |gm2|
+  @wc_player_touches_array << gm2["TCHS"]
+end
+@wc_gm1_player_touches.each do |gm1|
+  @wc_player_touches_array << gm1["TCHS"]
+end
+
+#Western Conference team total touches
+@wc_team_touches_array = []
+@wc_gm5_team_touches.each do |gm5|
+  @wc_team_touches_array << gm5["TCHS"]
+end
+@wc_gm4_team_touches.each do |gm4|
+  @wc_team_touches_array << gm4["TCHS"]
+end
+@wc_gm3_team_touches.each do |gm3|
+  @wc_team_touches_array << gm3["TCHS"]
+end
+@wc_gm2_team_touches.each do |gm2|
+  @wc_team_touches_array << gm2["TCHS"]
+end
+@wc_gm1_team_touches.each do |gm1|
+  @wc_team_touches_array << gm1["TCHS"]
+end
+
 	end
 end
