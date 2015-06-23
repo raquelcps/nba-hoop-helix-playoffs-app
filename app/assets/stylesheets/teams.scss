@@ -19,6 +19,15 @@
 	//float:left;
 }
 
+.team-page-profile {
+  padding: 0px 0px 0px 45px;
+  margin-bottom: 20px;
+}
+
+.team-page-profile img {
+  width: 130px;
+}
+
 .team-main-stats {
 	margin-top: 30px;
 }
@@ -64,18 +73,28 @@ top: 3px;
 	text-decoration: none; 
 }
 .team-players-all {
-	margin-top: 60px;
+	margin-top: 59px;
 }
 
 .team-players-all .heading-custom {
-    padding: 8px;
-    background-color: #F2C97D;
+    padding: 9px;
+    //background-color: #E39D44;
     margin: 0px;
-	//border: 1px solid #E4AA3D;
+    font-size: 12px;
+    text-transform:uppercase;
+    color: #777;
+	border-top: 1px solid #eee;
+	box-shadow: 0px -1px 5px #eee;
+}
+
+.team-players-all .table {
+	border-bottom: 1px solid #ddd;
+	box-shadow: 0px 1px 4px #eee;
 }
 
 .team-players-all .table td {
 	padding-bottom: 0px;
+	vertical-align: bottom;
 }
 
 .fa {
@@ -85,21 +104,11 @@ top: 3px;
 .single-pic {
 	//margin-top: 30px;
 	text-align:center;
-	height: 50px;
+	//height: 50px;
 }
 
 .td .thumbnail {
 	padding: 0px;
 }
 
-.single-pic button {
-	background-color: #fff;
-	width: 100%;
-	color: #777;
-}
 
-.single-pic button:hover {
-	background-color: #E4AA3D;
-	width: 100%;
-	color: #777;
-}

@@ -4,10 +4,73 @@
 	<div class="page-sub-nav col-md-12">	 
 	  	<h4><%= @team.team_city %> <%= @team.team_name %></h4> 	 	
 	</div>
-	<div class="col-md-12 alert alert-info alert-dismissible alert-custom" role="alert">
+	<div class="row">
+    <div class="col-md-2 col-md-offset-2 team-page-profile">
+      <div style="width: 100%">
+      	<% if @team.team_city == "Atlanta" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/atl_logo.svg">
+   	  
+   	  <% elsif @team.team_city == "Boston" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/bos_logo.svg">
+   	  
+   	  <% elsif @team.team_city == "Brooklyn" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/bkn_logo.svg">
+   	  
+   	  <% elsif @team.team_city == "Chicago" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/chi_logo.svg">
+   	  
+   	  <% elsif @team.team_city == "Cleveland" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/cle_logo.svg">
+   	 
+   	  <% elsif @team.team_city == "Dallas" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/dal_logo.svg">
+   	 
+   	  <% elsif @team.team_city == "Golden State" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/gsw_logo.svg">
+   	  
+   	  <% elsif @team.team_city == "Houston" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/hou_logo.svg">
+   	  
+   	  <% elsif @team.team_name == "Clippers" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/lac_logo.svg">
+   	
+   	  <% elsif @team.team_city == "Memphis" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/mem_logo.svg">
+   	  
+   	  <% elsif @team.team_city == "Milwaukee" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/mil_logo.svg">
+   	  
+   	  <% elsif @team.team_city == "New Orleans" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/nop_logo.svg">
+   	  
+   	  <% elsif @team.team_city == "Portland" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/por_logo.svg">
+   	  
+   	  <% elsif @team.team_city == "San Antonio" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/sas_logo.svg">
+   	  
+   	  <% elsif @team.team_city == "Toronto" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/tor_logo.svg">
+   	  
+   	  <% elsif @team.team_city == "Washington" %>
+		  <img src="http://stats.nba.com/media/img/teams/logos/was_logo.svg">
+   	  <% end %>
+   	  </div>
+    </div>
+    <div class="col-md-4 player-page-info">
+    	<h5><%= (@po_team_totals_array[0]["PTS"]/ @po_team_totals_array[0]["GP"].to_f).round(1) %> PTS / <%= (@po_team_totals_array[0]["REB"]/ @po_team_totals_array[0]["GP"].to_f).round(1) %> REB / <%= (@po_team_totals_array[0]["AST"]/ @po_team_totals_array[0]["GP"].to_f).round(1) %> AST</h5>
+    	<p>Record: <%= @po_team_totals_array[0]["W"] %>W - <%= @po_team_totals_array[0]["L"] %>L </p>
+    	<p>Win Percentage: <%= @po_team_totals_array[0]["W_PCT"] %></p>
+    </div>
+    </div>
+    <div class="page-sub-nav">
+	  <h4>Team Totals by Player<h4>  	
+	</div>
+  
+	<!-- <div class="col-md-12 alert alert-info alert-dismissible alert-custom" role="alert">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		Select a player below to see 2015 playoff production
-	</div>
+	</div> -->
 	
 	<div class="col-md-8 team-main-stats">
 	<div class="row">
@@ -24,7 +87,7 @@
 	       <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["MIN"].round(1)}.reverse[0..4]. each do |hash| %>     
 	           <tr>	
-	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["MIN"].round(1) %>
 	         	 </td>
@@ -35,7 +98,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamMIN" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["MIN"].round(1)}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["MIN"].round(1) %>
 	         	 </td>
@@ -58,7 +121,7 @@
 	       <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["AST"]}.reverse[0..4]. each do |hash| %>     
 	           <tr>	
-	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["AST"] %>
 	         	 </td>
@@ -69,7 +132,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamAST" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["AST"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["AST"] %>
 	         	 </td>
@@ -92,7 +155,7 @@
 	       <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["REB"]}.reverse[0..4]. each do |hash| %>     
 	           <tr>	
-	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["REB"] %>
 	         	 </td>
@@ -103,7 +166,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamREB" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["REB"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["REB"] %>
 	         	 </td>
@@ -129,7 +192,7 @@
 	       <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["OREB"]}.reverse[0..4]. each do |hash| %>     
 	           <tr>	
-	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["OREB"] %>
 	         	 </td>
@@ -140,7 +203,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamOREB" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["OREB"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["OREB"] %>
 	         	 </td>
@@ -163,7 +226,7 @@
 	       <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["DREB"]}.reverse[0..4]. each do |hash| %>     
 	           <tr>	
-	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["DREB"] %>
 	         	 </td>
@@ -174,7 +237,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamDREB" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["DREB"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["DREB"] %>
 	         	 </td>
@@ -197,7 +260,7 @@
 	       <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["PTS"]}.reverse[0..4]. each do |hash| %>     
 	           <tr>	
-	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["PTS"] %>
 	         	 </td>
@@ -208,7 +271,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamPTS" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["PTS"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["PTS"] %>
 	         	 </td>
@@ -233,7 +296,7 @@
 	       <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["FGM"]}.reverse[0..4]. each do |hash| %>     
 	           <tr>	
-	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["FGM"] %>
 	         	 </td>
@@ -244,7 +307,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamFGM" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["FGM"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["FGM"] %>
 	         	 </td>
@@ -267,7 +330,7 @@
 	       <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["FGA"]}.reverse[0..4]. each do |hash| %>     
 	           <tr>	
-	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["FGA"] %>
 	         	 </td>
@@ -278,7 +341,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamFGA" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["FGA"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["FGA"] %>
 	         	 </td>
@@ -301,7 +364,7 @@
 	        <tbody>
 	       <% @po_team_rosters_array.sort_by { |hash| hash["FG3M"]}.reverse[0..4]. each do |hash| %>  
 	         <tr>            
-	         <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         </td>
 	         <td><%= hash["FG3M"] %>
 	         </td> 
@@ -312,7 +375,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamFG3M" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["FG3M"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["FG3M"] %>
 	         	 </td>
@@ -337,7 +400,7 @@
 	        <tbody>
 	       <% @po_team_rosters_array.sort_by { |hash| hash["FG3A"]}.reverse[0..4]. each do |hash| %>
 	         <tr>              
-	         <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         </td>
 	         <td><%= hash["FG3A"] %>
 	         </td>  
@@ -348,7 +411,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamFG3A" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["FG3A"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["FG3A"] %>
 	         	 </td>
@@ -373,7 +436,7 @@
 	        <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["FTM"]}.reverse[0..4]. each do |hash| %>
 	         <tr>              
-	         <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         </td>
 	         <td><%= hash["FTM"] %>
 	         </td> 
@@ -384,7 +447,7 @@
 	   	    <tbody class="table collapse" id="collapseTeamFTM" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["FTM"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["FTM"] %>
 	         	 </td>
@@ -409,7 +472,7 @@
 	       <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["FTA"]}.reverse[0..4]. each do |hash| %>     
 	           <tr>	
-	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["FTA"] %>
 	         	 </td>
@@ -420,7 +483,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamFTA" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["FTA"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["FTA"] %>
 	         	 </td>
@@ -447,7 +510,7 @@
 	       <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["STL"]}.reverse[0..4]. each do |hash| %>     
 	           <tr>	
-	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["STL"] %>
 	         	 </td>
@@ -458,7 +521,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamSTL" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["STL"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["STL"] %>
 	         	 </td>
@@ -483,7 +546,7 @@
 	       <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["BLK"]}.reverse[0..4]. each do |hash| %>     
 	           <tr>	
-	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["BLK"] %>
 	         	 </td>
@@ -494,7 +557,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamBLK" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["BLK"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["BLK"] %>
 	         	 </td>
@@ -519,7 +582,7 @@
 	       <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["PFD"]}.reverse[0..4]. each do |hash| %>     
 	           <tr>	
-	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["PFD"] %>
 	         	 </td>
@@ -530,7 +593,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamPFD" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["PFD"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["PFD"] %>
 	         	 </td>
@@ -557,7 +620,7 @@
 	       <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["TOV"]}.reverse[0..4]. each do |hash| %>     
 	           <tr>	
-	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["TOV"] %>
 	         	 </td>
@@ -568,7 +631,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamTOV" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["TOV"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["TOV"] %>
 	         	 </td>
@@ -593,7 +656,7 @@
 	       <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["BLKA"]}.reverse[0..4]. each do |hash| %>     
 	           <tr>	
-	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["BLKA"] %>
 	         	 </td>
@@ -604,7 +667,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamBLKA" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["BLKA"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["BLKA"] %>
 	         	 </td>
@@ -631,7 +694,7 @@
 	       <tbody>
 	         <% @po_team_rosters_array.sort_by { |hash| hash["PF"]}.reverse[0..4]. each do |hash| %>     
 	           <tr>	
-	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["PF"] %>
 	         	 </td>
@@ -642,7 +705,7 @@
 	   	   <tbody class="table collapse" id="collapseTeamPF" style="font-size: 12px;">
 	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["PF"]}.reverse[5..-1]. each do |hash| %>
 	   	   	   <tr>
-	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
 	         	 </td>
 	         	 <td><%= hash["PF"] %>
 	         	 </td>
@@ -661,11 +724,11 @@
 	  	<p class="heading-custom"><i class="fa fa-user"></i>Player Profiles</p>
 	    </div>
 	  </div>
-	  <table class="table">
+	  <table class="table table-hover">
 	  	<tbody>
 	  	    <% @po_team_rosters_array.each do |hash| %>
 		  <tr>
-			<td>
+			<td class="single-pic">
 		  	  <a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();">
 		  	  	<img src="http://stats.nba.com/media/players/230x185/<%= hash['PLAYER_ID'] %>.png" width="75px"></a>
 		    </td>
