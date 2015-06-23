@@ -664,33 +664,18 @@
 	  <table class="table">
 	  	<tbody>
 	  	    <% @po_team_rosters_array.each do |hash| %>
-
-<tr>
-	<td>
+		  <tr>
+			<td>
 		  	  <a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();">
 		  	  	<img src="http://stats.nba.com/media/players/230x185/<%= hash['PLAYER_ID'] %>.png" width="75px"></a>
-	  	  </div>
-	</td>
-	<td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
-	</td>
-</tr>
-<% end %>
-</tbody>
-</table>	
-	    <% @po_team_rosters_array.each do |hash| %>
-	  <div class="row">
-		  <div class="col-md-4">
-		  	<div class="single-pic" onclick="dosomething();">
-		  	  <a href="/players/<%= hash['PLAYER_ID'] %>" class="thumbnail">
-		  	  	<img src="http://stats.nba.com/media/players/230x185/<%= hash['PLAYER_ID'] %>.png" width="75px"></a>
-	  	  </div>
-	  	</div>
-	  	  <div class="col-md-8">
-			  <button type="button" class="btn"><%= hash["PLAYER_NAME"] %></button></a>
-			</div>
-			
-  	  </div>
-  	    <% end %> 
+		    </td>
+		    <td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
+			</td>
+		  </tr>
+			<% end %>
+		</tbody>
+	  </table>	
+	   
 	</div>
 
 </div>
