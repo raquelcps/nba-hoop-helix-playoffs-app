@@ -8,17 +8,690 @@
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		Select a player below to see 2015 playoff production
 	</div>
-	<div class="row team-players-all">
-	  <% @po_team_rosters_array.each do |hash| %>
+	
+	<div class="col-md-8 team-main-stats">
+	<div class="row">
+	  <!-- Player MINS -->	
+	  <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom"> <a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamMIN" aria-expanded="false" aria-controls="collapseTeamMIN" title="">MIN
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a></th>      
+	       </thead>                   
+	       <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["MIN"].round(1)}.reverse[0..4]. each do |hash| %>     
+	           <tr>	
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["MIN"].round(1) %>
+	         	 </td>
+	   		   </tr>
+	         <% end %>
+	   	   </tbody>
+	   	   <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamMIN" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["MIN"].round(1)}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["MIN"].round(1) %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse -->
+	      </table>
+      </div>
+      <!-- Player AST -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamAST" aria-expanded="false" aria-controls="collapseTeamAST" title="">AST
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a></th>      
+	       </thead>                   
+	       <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["AST"]}.reverse[0..4]. each do |hash| %>     
+	           <tr>	
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["AST"] %>
+	         	 </td>
+	   		   </tr>
+	         <% end %>
+	   	   </tbody>
+	   	   <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamAST" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["AST"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["AST"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse --> 
+	      </table>
+      </div>
+      <!-- Player REB -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamREB" aria-expanded="false" aria-controls="collapseTeamREB" title="">REB
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a></th>      
+	       </thead>                   
+	       <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["REB"]}.reverse[0..4]. each do |hash| %>     
+	           <tr>	
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["REB"] %>
+	         	 </td>
+	   		   </tr>
+	         <% end %>
+	   	   </tbody>
+	   	   <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamREB" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["REB"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["REB"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse --> 
+	      </table>
+      </div>
+      
+  </div>
+  <div class="row">
+  	<!-- Player OREB -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamOREB" aria-expanded="false" aria-controls="collapseTeamOREB" title="">OREB
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a></th>      
+	       </thead>                   
+	       <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["OREB"]}.reverse[0..4]. each do |hash| %>     
+	           <tr>	
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["OREB"] %>
+	         	 </td>
+	   		   </tr>
+	         <% end %>
+	   	   </tbody>
+	   	   <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamOREB" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["OREB"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["OREB"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse -->
+	      </table>
+      </div>
+      <!-- Player DREB -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamDREB" aria-expanded="false" aria-controls="collapseTeamDREB" title="">DREB
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a></th>      
+	       </thead>                   
+	       <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["DREB"]}.reverse[0..4]. each do |hash| %>     
+	           <tr>	
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["DREB"] %>
+	         	 </td>
+	   		   </tr>
+	         <% end %>
+	   	   </tbody>
+	   	   <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamDREB" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["DREB"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["DREB"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse -->
+	      </table>
+      </div>
+      <!-- Player PTS -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamPTS" aria-expanded="false" aria-controls="collapseTeamPTS" title="">PTS
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a></th>      
+	       </thead>                   
+	       <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["PTS"]}.reverse[0..4]. each do |hash| %>     
+	           <tr>	
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["PTS"] %>
+	         	 </td>
+	   		   </tr>
+	         <% end %>
+	   	   </tbody>
+	   	   <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamPTS" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["PTS"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["PTS"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse --> 
+	      </table>
+      </div>
+      <div class="clearfix visible-md-block"></div>
+  </div>
+  <div class="row">
+      <!-- Player FGM -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamFGM" aria-expanded="false" aria-controls="collapseTeamFGM" title="">FGM
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a></th>      
+	       <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["FGM"]}.reverse[0..4]. each do |hash| %>     
+	           <tr>	
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["FGM"] %>
+	         	 </td>
+	   		   </tr>
+	         <% end %>
+	   	   </tbody>
+	   	   <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamFGM" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["FGM"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["FGM"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse -->
+	      </table>
+      </div>
+      <!-- Player FGA -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamFGA" aria-expanded="false" aria-controls="collapseTeamFGA" title="">FGA
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a></th>      
+	       </thead>                   
+	       <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["FGA"]}.reverse[0..4]. each do |hash| %>     
+	           <tr>	
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["FGA"] %>
+	         	 </td>
+	   		   </tr>
+	         <% end %>
+	   	   </tbody>
+	   	   <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamFGA" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["FGA"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["FGA"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse -->
+	      </table>
+      </div>
+      <!-- Player FG3M -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamFG3M" aria-expanded="false" aria-controls="collapseTeamFG3M" title="">FG3M
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a></th>      
+	       </thead>                   
+	        <tbody>
+	       <% @po_team_rosters_array.sort_by { |hash| hash["FG3M"]}.reverse[0..4]. each do |hash| %>  
+	         <tr>            
+	         <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         </td>
+	         <td><%= hash["FG3M"] %>
+	         </td> 
+	         </tr>       
+	       <% end %>
+	        </tbody>
+	        <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamFG3M" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["FG3M"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["FG3M"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse -->
+	      </table>
+      </div>
+  </div>
+  <div class="row">
+      <!-- Player FG3A -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamFG3A" aria-expanded="false" aria-controls="collapseTeamFG3A" title="">FG3A
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a></th>      
+	       </thead>                   
+	        <tbody>
+	       <% @po_team_rosters_array.sort_by { |hash| hash["FG3A"]}.reverse[0..4]. each do |hash| %>
+	         <tr>              
+	         <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         </td>
+	         <td><%= hash["FG3A"] %>
+	         </td>  
+	         </tr>      
+	       <% end %>
+	        </tbody>
+	        <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamFG3A" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["FG3A"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["FG3A"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse -->
+	      </table>
+      </div>
+      <!-- Player FTM -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom">
+	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamFTM" aria-expanded="false" aria-controls="collapseTeamFTM" title="">FTM
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a>
+	         </th>      
+	       </thead>                   
+	        <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["FTM"]}.reverse[0..4]. each do |hash| %>
+	         <tr>              
+	         <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         </td>
+	         <td><%= hash["FTM"] %>
+	         </td> 
+	         </tr>       
+	         <% end %>
+	        </tbody>
+	        <!-- Start collapse -->
+	   	    <tbody class="table collapse" id="collapseTeamFTM" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["FTM"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["FTM"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		    </tbody>
+		    <!-- End Collapse -->
+	      </table>
+      </div>
+      <!-- Player FTA -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom">
+	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamFTA" aria-expanded="false" aria-controls="collapseTeamFTA" title="">FTA
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a>
+	         </th>      
+	       </thead>                   
+	       <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["FTA"]}.reverse[0..4]. each do |hash| %>     
+	           <tr>	
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["FTA"] %>
+	         	 </td>
+	   		   </tr>
+	         <% end %>
+	   	   </tbody>
+	   	   <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamFTA" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["FTA"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["FTA"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse -->                
+		  </table>	     	  
+      </div>
+    </div><!-- END row -->
+    <div class="row">
+      <!-- Player STL -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom">
+	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamSTL" aria-expanded="false" aria-controls="collapseTeamSTL" title="">STL
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a>
+	         </th>      
+	       </thead>                   
+	       <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["STL"]}.reverse[0..4]. each do |hash| %>     
+	           <tr>	
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["STL"] %>
+	         	 </td>
+	   		   </tr>
+	         <% end %>
+	   	   </tbody>
+	   	   <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamSTL" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["STL"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["STL"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse -->               
+		  </table>	     	  
+      </div>
+      <!-- Player BLK -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom">
+	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamBLK" aria-expanded="false" aria-controls="collapseTeamBLK" title="">BLK
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a>
+	         </th>      
+	       </thead>                   
+	       <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["BLK"]}.reverse[0..4]. each do |hash| %>     
+	           <tr>	
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["BLK"] %>
+	         	 </td>
+	   		   </tr>
+	         <% end %>
+	   	   </tbody>
+	   	   <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamBLK" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["BLK"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["BLK"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse -->          
+		  </table>	     	  
+      </div>
+      <!-- Player PFD -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom">
+	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamPFD" aria-expanded="false" aria-controls="collapseTeamPFD" title="">PFD
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a>
+	         </th>      
+	       </thead>                   
+	       <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["PFD"]}.reverse[0..4]. each do |hash| %>     
+	           <tr>	
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["PFD"] %>
+	         	 </td>
+	   		   </tr>
+	         <% end %>
+	   	   </tbody>
+	   	   <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamPFD" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["PFD"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["PFD"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse -->               
+		  </table>	     	  
+      </div>
+    </div>
+    <div class="row">
+      <!-- Player TOV -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom">
+	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamTOV" aria-expanded="false" aria-controls="collapseTeamTOV" title="">TOV
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a>
+	         </th>      
+	       </thead>                   
+	       <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["TOV"]}.reverse[0..4]. each do |hash| %>     
+	           <tr>	
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["TOV"] %>
+	         	 </td>
+	   		   </tr>
+	         <% end %>
+	   	   </tbody>
+	   	   <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamTOV" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["TOV"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["TOV"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse -->                
+		  </table>	     	  
+      </div>
+      <!-- Player BLKA -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+	         <th></th>
+	         <th class="heading-custom">
+	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamBLKA" aria-expanded="false" aria-controls="collapseTeamBLKA" title="">BLKA
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		          </a>
+	         </th>      
+	       </thead>                   
+	       <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["BLKA"]}.reverse[0..4]. each do |hash| %>     
+	           <tr>	
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["BLKA"] %>
+	         	 </td>
+	   		   </tr>
+	         <% end %>
+	   	   </tbody>
+	   	   <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamBLKA" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["BLKA"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["BLKA"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse -->               
+		  </table>	     	  
+      </div>
+      <!-- Player PF -->
+      <div class="col-md-4 team-stat-short">
+		  <table class="table" style="font-size: 12px;">
+	       <thead class="team-toggle">
+		     <!-- Collapse button -->
+	         <th></th>
+	         <th class="heading-custom">
+	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamPF" aria-expanded="false" aria-controls="collapseTeamPF" title="Show full team">PF 
+			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+		        </a>
+		     </th>      
+		     <!-- End collapse button -->	
+	       </thead>                   
+	       <tbody>
+	         <% @po_team_rosters_array.sort_by { |hash| hash["PF"]}.reverse[0..4]. each do |hash| %>     
+	           <tr>	
+	             <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["PF"] %>
+	         	 </td>
+	   		   </tr>
+	         <% end %>
+	   	   </tbody>
+	   	   <!-- Start collapse -->
+	   	   <tbody class="table collapse" id="collapseTeamPF" style="font-size: 12px;">
+	   	   	 <% @po_team_rosters_array.sort_by { |hash| hash["PF"]}.reverse[5..-1]. each do |hash| %>
+	   	   	   <tr>
+	   	   	   	 <td><a href="/players/<%= hash['PLAYER_ID'] %>"><%= hash["PLAYER_NAME"] %></a>
+	         	 </td>
+	         	 <td><%= hash["PF"] %>
+	         	 </td>
+			   </tr>
+	         <% end %>
+		   </tbody>
+		   <!-- End Collapse -->		                   
+		  </table>	     	  
+      </div>
+    </div>
+	</div><!-- END Main team stats -->
+
+	<div class="col-md-4 team-players-all">
+	  <div class="row">
+	  	<div class="col-md-12">
+	  	<p class="heading-custom"><i class="fa fa-user"></i>Player Profiles</p>
+	    </div>
+	  </div>
+	  <table class="table">
+	  	<tbody>
+	  	    <% @po_team_rosters_array.each do |hash| %>
+
+<tr>
+	<td>
+		  	  <a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();">
+		  	  	<img src="http://stats.nba.com/media/players/230x185/<%= hash['PLAYER_ID'] %>.png" width="75px"></a>
+	  	  </div>
+	</td>
+	<td><a href="/players/<%= hash['PLAYER_ID'] %>" onclick="dosomething();"><%= hash["PLAYER_NAME"] %></a>
+	</td>
+</tr>
+<% end %>
+</tbody>
+</table>	
+	    <% @po_team_rosters_array.each do |hash| %>
+	  <div class="row">
 		  <div class="col-md-4">
 		  	<div class="single-pic" onclick="dosomething();">
 		  	  <a href="/players/<%= hash['PLAYER_ID'] %>" class="thumbnail">
-		  	  	<img src="http://stats.nba.com/media/players/230x185/<%= hash['PLAYER_ID'] %>.png" width="150px">
-			  <button type="button" class="btn"><%= hash["PLAYER_NAME"] %> <i class="fa fa-user"></i></button></a>
+		  	  	<img src="http://stats.nba.com/media/players/230x185/<%= hash['PLAYER_ID'] %>.png" width="75px"></a>
+	  	  </div>
+	  	</div>
+	  	  <div class="col-md-8">
+			  <button type="button" class="btn"><%= hash["PLAYER_NAME"] %></button></a>
 			</div>
 			
-	  	  </div>
-  	  <% end %> 
+  	  </div>
+  	    <% end %> 
 	</div>
+
 </div>
 <!-- END Main -->

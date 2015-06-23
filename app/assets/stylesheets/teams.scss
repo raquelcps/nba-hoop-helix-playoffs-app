@@ -19,17 +19,87 @@
 	//float:left;
 }
 
-.team-players-all {
-	padding: 10px 20px;
+.team-main-stats {
+	margin-top: 30px;
 }
 
+.team-stat-short {
+	margin-top:30px;
+}
+
+.arrow-toggle .glyphicon-menu-up,
+.arrow-toggle.collapsed .glyphicon-menu-down {
+    display: inline-block;
+}
+.arrow-toggle.collapsed .glyphicon-menu-up,
+.arrow-toggle .glyphicon-menu-down {
+    display: none;
+}
+
+.arrow-toggle .glyphicon-minus,
+.arrow-toggle.collapsed .glyphicon-plus {
+    display: inline-block;
+}
+.arrow-toggle.collapsed .glyphicon-minus,
+.arrow-toggle .glyphicon-plus {
+    display: none;
+}
+
+.team-toggle {
+	background-color: #DDD;
+}
+.team-toggle .heading-custom {
+	width: 30%;	
+}
+
+.team-toggle .glyphicon {
+	//padding-left: 15px;
+	float: right;
+font-size: 10px;
+top: 3px;
+}
+
+.team-toggle a {
+	font-weight: 300;
+	text-decoration: none; 
+}
+.team-players-all {
+	margin-top: 60px;
+}
+
+.team-players-all .heading-custom {
+    padding: 8px;
+    background-color: #F2C97D;
+    margin: 0px;
+	//border: 1px solid #E4AA3D;
+}
+
+.team-players-all .table td {
+	padding-bottom: 0px;
+}
+
+.fa {
+  padding: 0px 8px 0px 3px;
+}
 
 .single-pic {
-	margin-top: 45px;
+	//margin-top: 30px;
 	text-align:center;
+	height: 50px;
+}
+
+.td .thumbnail {
+	padding: 0px;
 }
 
 .single-pic button {
-	background-color: #eee;
+	background-color: #fff;
 	width: 100%;
+	color: #777;
+}
+
+.single-pic button:hover {
+	background-color: #E4AA3D;
+	width: 100%;
+	color: #777;
 }
