@@ -20,12 +20,15 @@
 }
 
 .team-page-profile {
-  padding: 0px 0px 0px 45px;
-  margin-bottom: 20px;
+  padding: 0px 0px 0px 16%;
+  overflow: hidden;
+  height: 205px;
+  margin-top: -24px;
 }
 
 .team-page-profile img {
-  width: 130px;
+  width: 200px;
+  vertical-align: middle;
 }
 
 .team-main-stats {
@@ -34,6 +37,18 @@
 
 .team-stat-short {
 	margin-top:30px;
+}
+
+.team-total {
+	padding-left: 10px;
+	font-weight: 300;
+	//text-align: right;
+	color: #777;
+}
+
+.team-total h4 {
+	color: #C0C3C6;
+	font-size: 15px;
 }
 
 .arrow-toggle .glyphicon-menu-up,

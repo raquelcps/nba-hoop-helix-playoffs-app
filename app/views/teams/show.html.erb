@@ -5,8 +5,8 @@
 	  	<h4><%= @team.team_city %> <%= @team.team_name %></h4> 	 	
 	</div>
 	<div class="row">
-    <div class="col-md-2 col-md-offset-2 team-page-profile">
-      <div style="width: 100%">
+    <div class="col-md-4 team-page-profile">
+      
       	<% if @team.team_city == "Atlanta" %>
 		  <img src="http://stats.nba.com/media/img/teams/logos/atl_logo.svg">
    	  
@@ -55,16 +55,17 @@
    	  <% elsif @team.team_city == "Washington" %>
 		  <img src="http://stats.nba.com/media/img/teams/logos/was_logo.svg">
    	  <% end %>
-   	  </div>
+   	  
     </div>
     <div class="col-md-4 player-page-info">
     	<h5><%= (@po_team_totals_array[0]["PTS"]/ @po_team_totals_array[0]["GP"].to_f).round(1) %> PTS / <%= (@po_team_totals_array[0]["REB"]/ @po_team_totals_array[0]["GP"].to_f).round(1) %> REB / <%= (@po_team_totals_array[0]["AST"]/ @po_team_totals_array[0]["GP"].to_f).round(1) %> AST</h5>
+    	<p>Games: <%= @po_team_totals_array[0]["GP"] %></p>
     	<p>Record: <%= @po_team_totals_array[0]["W"] %>W - <%= @po_team_totals_array[0]["L"] %>L </p>
     	<p>Win Percentage: <%= @po_team_totals_array[0]["W_PCT"] %></p>
     </div>
     </div>
     <div class="page-sub-nav">
-	  <h4>Team Totals by Player<h4>  	
+	  <h4>Team Totals and Breakdown<h4>  	
 	</div>
   
 	<!-- <div class="col-md-12 alert alert-info alert-dismissible alert-custom" role="alert">
@@ -76,9 +77,10 @@
 	<div class="row">
 	  <!-- Player MINS -->	
 	  <div class="col-md-4 team-stat-short">
+	  	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["MIN"] * 5 %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["MIN"] * 5 %></th>
 	         <th class="heading-custom"> <a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamMIN" aria-expanded="false" aria-controls="collapseTeamMIN" title="">MIN
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -110,9 +112,10 @@
       </div>
       <!-- Player AST -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["AST"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["AST"] %></th>
 	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamAST" aria-expanded="false" aria-controls="collapseTeamAST" title="">AST
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -144,9 +147,10 @@
       </div>
       <!-- Player REB -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["REB"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["REB"] %></th>
 	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamREB" aria-expanded="false" aria-controls="collapseTeamREB" title="">REB
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -181,9 +185,10 @@
   <div class="row">
   	<!-- Player OREB -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["OREB"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["OREB"] %></th>
 	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamOREB" aria-expanded="false" aria-controls="collapseTeamOREB" title="">OREB
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -215,9 +220,10 @@
       </div>
       <!-- Player DREB -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["DREB"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["DREB"] %></th>
 	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamDREB" aria-expanded="false" aria-controls="collapseTeamDREB" title="">DREB
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -249,9 +255,10 @@
       </div>
       <!-- Player PTS -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["PTS"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["PTS"] %></th>
 	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamPTS" aria-expanded="false" aria-controls="collapseTeamPTS" title="">PTS
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -286,9 +293,10 @@
   <div class="row">
       <!-- Player FGM -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["FGM"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["FGM"] %></th>
 	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamFGM" aria-expanded="false" aria-controls="collapseTeamFGM" title="">FGM
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -319,9 +327,10 @@
       </div>
       <!-- Player FGA -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["FGA"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["FGA"] %></th>
 	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamFGA" aria-expanded="false" aria-controls="collapseTeamFGA" title="">FGA
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -353,9 +362,10 @@
       </div>
       <!-- Player FG3M -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["FG3M"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["FG3M"] %></th>
 	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamFG3M" aria-expanded="false" aria-controls="collapseTeamFG3M" title="">FG3M
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -389,9 +399,10 @@
   <div class="row">
       <!-- Player FG3A -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["FG3A"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["FG3A"] %></th>
 	         <th class="heading-custom"><a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamFG3A" aria-expanded="false" aria-controls="collapseTeamFG3A" title="">FG3A
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 		            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
@@ -423,9 +434,10 @@
       </div>
       <!-- Player FTM -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["FTM"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["FTM"] %></th>
 	         <th class="heading-custom">
 	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamFTM" aria-expanded="false" aria-controls="collapseTeamFTM" title="">FTM
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -459,9 +471,10 @@
       </div>
       <!-- Player FTA -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["FTA"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["FTA"] %></th>
 	         <th class="heading-custom">
 	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamFTA" aria-expanded="false" aria-controls="collapseTeamFTA" title="">FTA
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -497,9 +510,10 @@
     <div class="row">
       <!-- Player STL -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["STL"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["STL"] %></th>
 	         <th class="heading-custom">
 	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamSTL" aria-expanded="false" aria-controls="collapseTeamSTL" title="">STL
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -533,9 +547,10 @@
       </div>
       <!-- Player BLK -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["BLK"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["BLK"] %></th>
 	         <th class="heading-custom">
 	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamBLK" aria-expanded="false" aria-controls="collapseTeamBLK" title="">BLK
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -569,9 +584,10 @@
       </div>
       <!-- Player PFD -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["PFD"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["PFD"] %></th>
 	         <th class="heading-custom">
 	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamPFD" aria-expanded="false" aria-controls="collapseTeamPFD" title="">PFD
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -607,9 +623,10 @@
     <div class="row">
       <!-- Player TOV -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["TOV"].round %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["TOV"].round %></th>
 	         <th class="heading-custom">
 	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamTOV" aria-expanded="false" aria-controls="collapseTeamTOV" title="">TOV
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -643,9 +660,10 @@
       </div>
       <!-- Player BLKA -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["BLKA"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["BLKA"] %></th>
 	         <th class="heading-custom">
 	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamBLKA" aria-expanded="false" aria-controls="collapseTeamBLKA" title="">BLKA
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -679,10 +697,11 @@
       </div>
       <!-- Player PF -->
       <div class="col-md-4 team-stat-short">
+      	  <!-- <div class="team-total"><h4><%= @po_team_totals_array[0]["PF"] %></h4></div> -->
 		  <table class="table" style="font-size: 12px;">
 	       <thead class="team-toggle">
 		     <!-- Collapse button -->
-	         <th></th>
+	         <th class="team-total"><%= @po_team_totals_array[0]["PF"] %></th>
 	         <th class="heading-custom">
 	         	<a class="arrow-toggle collapsed" data-toggle="collapse" href="#collapseTeamPF" aria-expanded="false" aria-controls="collapseTeamPF" title="Show full team">PF 
 			  	    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
