@@ -62,6 +62,55 @@
     	<p>Games: <%= @po_team_totals_array[0]["GP"] %></p>
     	<p>Record: <%= @po_team_totals_array[0]["W"] %>W - <%= @po_team_totals_array[0]["L"] %>L </p>
     	<p>Win Percentage: <%= @po_team_totals_array[0]["W_PCT"] %></p>
+    	<% if @team.team_city == "Atlanta" %>
+		  <p>Eliminated by Cleveland Cavaliers, Conference Finals</p>
+   	  
+   	  <% elsif @team.team_city == "Boston" %>
+		  <p>Eliminated by Cleveland Cavaliers, Round 1</p>
+   	  
+   	  <% elsif @team.team_city == "Brooklyn" %>
+		  <p>Eliminated by Atlanta Hawks, Round 1</p>
+   	  
+   	  <% elsif @team.team_city == "Chicago" %>
+		  <p>Eliminated by Cleveland Cavaliers, Semifinals</p>
+   	  
+   	  <% elsif @team.team_city == "Cleveland" %>
+		  <p>Eliminated by Golden State Warriors, Finals</p>
+   	 
+   	  <% elsif @team.team_city == "Dallas" %>
+		  <p>Eliminated by Houston Rockets, Round 1</p>
+   	 
+   	  <% elsif @team.team_city == "Golden State" %>
+		  <p>Defeated Cleveland Cavaliers, Finals</p>
+   	  
+   	  <% elsif @team.team_city == "Houston" %>
+		  <p>Eliminated by Golden State Warriors, Conference Finals</p>
+   	  
+   	  <% elsif @team.team_name == "Clippers" %>
+		  <p>Eliminated by Houston Rockets, Semifinals</p>
+   	
+   	  <% elsif @team.team_city == "Memphis" %>
+		   <p>Eliminated by Golden State Warriors, Semifinals</p>
+   	  
+   	  <% elsif @team.team_city == "Milwaukee" %>
+		   <p>Eliminated by Chicago Bulls, Round 1</p>
+   	  
+   	  <% elsif @team.team_city == "New Orleans" %>
+		  <p>Eliminated by Golden State Warriors, Round 1</p>
+   	  
+   	  <% elsif @team.team_city == "Portland" %>
+		  <p>Eliminated by Memphis Grizzlies, Round 1</p>
+   	  
+   	  <% elsif @team.team_city == "San Antonio" %>
+		  <p>Eliminated by Los Angeles Clippers, Round 1</p>
+   	  
+   	  <% elsif @team.team_city == "Toronto" %>
+		  <p>Eliminated by Washington Wizards, Round 1</p>
+   	  
+   	  <% elsif @team.team_city == "Washington" %>
+		  <p>Eliminated by Atlanta Hawks, Semifinals</p>
+   	  <% end %>
+    	
     </div>
     </div>
     <div class="page-sub-nav">
